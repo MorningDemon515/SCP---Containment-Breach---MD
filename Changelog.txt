@@ -1,0 +1,29 @@
+﻿v4.0
+-Change encoding to ANSI
+-Modified some textures
+-Fixed some bugs
+-Improve and use MDText
+-Removed graphics
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+v3.0
+-All converters, music players, and model browsers have been removed
+-Add 4gb_ Path
+-Add Video
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+v2.0
+-Removed language selection
+-Modify some details
+-Modified converter
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+v1.0
+-Added CPU_ Details
+-Added MusicPlayer
+-Engine changed to Blitz3DTSS
+-Modified Update Checker
+-MDText replaces AAText
+-Changed font
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+vDemo
+-Engine changed to Blitz3DTSS
+-MDText replaces AAText
+-Added Language Selection
