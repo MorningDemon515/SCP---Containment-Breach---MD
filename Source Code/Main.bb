@@ -3257,22 +3257,22 @@ Repeat
 			
 			If (Not temp%)
 				Color 0,0,0
-				MDText((GraphicWidth / 2)+1, (GraphicHeight / 2) + 201, Msg, True, False); Min(MsgTimer / 2, 255)/255.0)
+				Text((GraphicWidth / 2)+1, (GraphicHeight / 2) + 201, Msg, True, False ,Min(MsgTimer / 2, 255)/255.0)
 				Color 255,255,255;Min(MsgTimer / 2, 255), Min(MsgTimer / 2, 255), Min(MsgTimer / 2, 255)
 			
-				MDText((GraphicWidth / 2), (GraphicHeight / 2) + 200, Msg, True, False);Min(MsgTimer / 2, 255)/255.0)
+				Text((GraphicWidth / 2), (GraphicHeight / 2) + 200, Msg, True, False,Min(MsgTimer / 2, 255)/255.0)
 			Else
 				Color 0,0,0
-				MDText((GraphicWidth / 2)+1, (GraphicHeight * 0.94) + 1, Msg, True, False);Min(MsgTimer / 2, 255)/255.0)
+				Text((GraphicWidth / 2)+1, (GraphicHeight * 0.94) + 1, Msg, True, False,Min(MsgTimer / 2, 255)/255.0)
 				Color 255,255,255;Min(MsgTimer / 2, 255), Min(MsgTimer / 2, 255), Min(MsgTimer / 2, 255)
 			
-				MDText((GraphicWidth / 2), (GraphicHeight * 0.94), Msg, True, False);Min(MsgTimer / 2, 255)/255.0)
+				Text((GraphicWidth / 2), (GraphicHeight * 0.94), Msg, True, False,Min(MsgTimer / 2, 255)/255.0)
 			EndIf
 			MsgTimer=MsgTimer-FPSfactor2 
 		End If
 		
 		Color 255, 255, 255
-		If ShowFPS Then SetFont ConsoleFont : MDText 20, 20, "FPS: " + FPS : SetFont Font1
+		If ShowFPS Then SetFont ConsoleFont : Text 20, 20, "FPS: " + FPS : SetFont Font1 
 		
 		DrawQuickLoading()
 		
@@ -3753,7 +3753,7 @@ Function DrawEnding()
 				
 				Color(255, 255, 255)
 				SetFont Font2
-				MDText(x + width / 2 + 40*MenuScale, y + 20*MenuScale, "THE END", True)
+				Text(x + width / 2 + 40*MenuScale, y + 20*MenuScale, "THE END", True)
 				SetFont Font1
 				
 				If AchievementsMenu=0 Then 
@@ -3784,11 +3784,11 @@ Function DrawEnding()
 						achievementsUnlocked = achievementsUnlocked + Achievements(i)
 					Next
 					
-					MDText x, y, "SCPs encountered: " +scpsEncountered
-					MDText x, y+20*MenuScale, "Achievements unlocked: " + achievementsUnlocked+"/"+(MAXACHIEVEMENTS)
-					MDText x, y+40*MenuScale, "Rooms found: " + roomsfound+"/"+roomamount
-					MDText x, y+60*MenuScale, "Documents discovered: " +docsfound+"/"+docamount
-					MDText x, y+80*MenuScale, "Items refined in SCP-914: " +RefinedItems			
+					Text x, y, "SCPs encountered: " +scpsEncountered
+					Text x, y+20*MenuScale, "Achievements unlocked: " + achievementsUnlocked+"/"+(MAXACHIEVEMENTS)
+					Text x, y+40*MenuScale, "Rooms found: " + roomsfound+"/"+roomamount
+					Text x, y+60*MenuScale, "Documents discovered: " +docsfound+"/"+docamount
+					Text x, y+80*MenuScale, "Items refined in SCP-914: " +RefinedItems			
 					
 					x = GraphicWidth / 2 - width / 2
 					y = GraphicHeight / 2 - height / 2
@@ -3897,14 +3897,14 @@ Function DrawCredits()
 		If Left(cl\txt,1)="*"
 			SetFont CreditsFont2
 			If cl\stay=False
-				MDText GraphicWidth/2,credits_Y+(24*cl\id*MenuScale),Right(cl\txt,Len(cl\txt)-1),True
+				Text GraphicWidth/2,credits_Y+(24*cl\id*MenuScale),Right(cl\txt,Len(cl\txt)-1),True
 			EndIf
 		ElseIf Left(cl\txt,1)="/"
 			LastCreditLine = Before(cl)
 		Else
 			SetFont CreditsFont
 			If cl\stay=False
-				MDText GraphicWidth/2,credits_Y+(24*cl\id*MenuScale),cl\txt,True
+				Text GraphicWidth/2,credits_Y+(24*cl\id*MenuScale),cl\txt,True
 			EndIf
 		EndIf
 		If LastCreditLine<>Null
@@ -3939,9 +3939,9 @@ Function DrawCredits()
 			If cl\stay
 				SetFont CreditsFont
 				If Left(cl\txt,1)="/"
-					MDText GraphicWidth/2,(GraphicHeight/2)+(endlinesamount/2)+(24*cl\id*MenuScale),Right(cl\txt,Len(cl\txt)-1),True
+					Text GraphicWidth/2,(GraphicHeight/2)+(endlinesamount/2)+(24*cl\id*MenuScale),Right(cl\txt,Len(cl\txt)-1),True
 				Else
-					MDText GraphicWidth/2,(GraphicHeight/2)+(24*(cl\id-LastCreditLine\id)*MenuScale)-((endlinesamount/2)*24*MenuScale),cl\txt,True
+					Text GraphicWidth/2,(GraphicHeight/2)+(24*(cl\id-LastCreditLine\id)*MenuScale)-((endlinesamount/2)*24*MenuScale),cl\txt,True
 				EndIf
 			EndIf
 		Next
@@ -4768,76 +4768,76 @@ Function DrawGUI()
 			SetFont ConsoleFont
 			
 			;Text x + 250, 50, "Zone: " + (EntityZ(Collider)/8.0)
-			MDText x - 50, 50, "Player Position: (" + f2s(EntityX(Collider), 3) + ", " + f2s(EntityY(Collider), 3) + ", " + f2s(EntityZ(Collider), 3) + ")"
-			MDText x - 50, 70, "Camera Position: (" + f2s(EntityX(Camera), 3)+ ", " + f2s(EntityY(Camera), 3) +", " + f2s(EntityZ(Camera), 3) + ")"
-			MDText x - 50, 100, "Player Rotation: (" + f2s(EntityPitch(Collider), 3) + ", " + f2s(EntityYaw(Collider), 3) + ", " + f2s(EntityRoll(Collider), 3) + ")"
-			MDText x - 50, 120, "Camera Rotation: (" + f2s(EntityPitch(Camera), 3)+ ", " + f2s(EntityYaw(Camera), 3) +", " + f2s(EntityRoll(Camera), 3) + ")"
-			MDText x - 50, 150, "Room: " + PlayerRoom\RoomTemplate\Name
+			Text x - 50, 50, "Player Position: (" + f2s(EntityX(Collider), 3) + ", " + f2s(EntityY(Collider), 3) + ", " + f2s(EntityZ(Collider), 3) + ")"
+			Text x - 50, 70, "Camera Position: (" + f2s(EntityX(Camera), 3)+ ", " + f2s(EntityY(Camera), 3) +", " + f2s(EntityZ(Camera), 3) + ")"
+			Text x - 50, 100, "Player Rotation: (" + f2s(EntityPitch(Collider), 3) + ", " + f2s(EntityYaw(Collider), 3) + ", " + f2s(EntityRoll(Collider), 3) + ")"
+			Text x - 50, 120, "Camera Rotation: (" + f2s(EntityPitch(Camera), 3)+ ", " + f2s(EntityYaw(Camera), 3) +", " + f2s(EntityRoll(Camera), 3) + ")"
+			Text x - 50, 150, "Room: " + PlayerRoom\RoomTemplate\Name
 			For ev.Events = Each Events
 				If ev\room = PlayerRoom Then
-					MDText x - 50, 170, "Room event: " + ev\EventName   
-					MDText x - 50, 190, "state: " + ev\EventState
-					MDText x - 50, 210, "state2: " + ev\EventState2   
-					MDText x - 50, 230, "state3: " + ev\EventState3
-					MDText x - 50, 250, "str: "+ ev\EventStr
+					Text x - 50, 170, "Room event: " + ev\EventName   
+					Text x - 50, 190, "state: " + ev\EventState
+					Text x - 50, 210, "state2: " + ev\EventState2   
+					Text x - 50, 230, "state3: " + ev\EventState3
+					Text x - 50, 250, "str: "+ ev\EventStr
 					Exit
 				EndIf
 			Next
-			MDText x - 50, 280, "Room coordinates: (" + Floor(EntityX(PlayerRoom\obj) / 8.0 + 0.5) + ", " + Floor(EntityZ(PlayerRoom\obj) / 8.0 + 0.5) + ", angle: "+PlayerRoom\angle + ")"
-			MDText x - 50, 300, "Stamina: " + f2s(Stamina, 3)
-			MDText x - 50, 320, "Death timer: " + f2s(KillTimer, 3)               
-			MDText x - 50, 340, "Blink timer: " + f2s(BlinkTimer, 3)
-			MDText x - 50, 360, "Injuries: " + Injuries
-			MDText x - 50, 380, "Bloodloss: " + Bloodloss
+			Text x - 50, 280, "Room coordinates: (" + Floor(EntityX(PlayerRoom\obj) / 8.0 + 0.5) + ", " + Floor(EntityZ(PlayerRoom\obj) / 8.0 + 0.5) + ", angle: "+PlayerRoom\angle + ")"
+			Text x - 50, 300, "Stamina: " + f2s(Stamina, 3)
+			Text x - 50, 320, "Death timer: " + f2s(KillTimer, 3)               
+			Text x - 50, 340, "Blink timer: " + f2s(BlinkTimer, 3)
+			Text x - 50, 360, "Injuries: " + Injuries
+			Text x - 50, 380, "Bloodloss: " + Bloodloss
 			If Curr173 <> Null
-				MDText x - 50, 410, "SCP - 173 Position (collider): (" + f2s(EntityX(Curr173\Collider), 3) + ", " + f2s(EntityY(Curr173\Collider), 3) + ", " + f2s(EntityZ(Curr173\Collider), 3) + ")"
-				MDText x - 50, 430, "SCP - 173 Position (obj): (" + f2s(EntityX(Curr173\obj), 3) + ", " + f2s(EntityY(Curr173\obj), 3) + ", " + f2s(EntityZ(Curr173\obj), 3) + ")"
+				Text x - 50, 410, "SCP - 173 Position (collider): (" + f2s(EntityX(Curr173\Collider), 3) + ", " + f2s(EntityY(Curr173\Collider), 3) + ", " + f2s(EntityZ(Curr173\Collider), 3) + ")"
+				Text x - 50, 430, "SCP - 173 Position (obj): (" + f2s(EntityX(Curr173\obj), 3) + ", " + f2s(EntityY(Curr173\obj), 3) + ", " + f2s(EntityZ(Curr173\obj), 3) + ")"
 				;Text x - 50, 410, "SCP - 173 Idle: " + Curr173\Idle
-				MDText x - 50, 450, "SCP - 173 State: " + Curr173\State
+				Text x - 50, 450, "SCP - 173 State: " + Curr173\State
 			EndIf
 			If Curr106 <> Null
-				MDText x - 50, 470, "SCP - 106 Position: (" + f2s(EntityX(Curr106\obj), 3) + ", " + f2s(EntityY(Curr106\obj), 3) + ", " + f2s(EntityZ(Curr106\obj), 3) + ")"
-				MDText x - 50, 490, "SCP - 106 Idle: " + Curr106\Idle
-				MDText x - 50, 510, "SCP - 106 State: " + Curr106\State
+				Text x - 50, 470, "SCP - 106 Position: (" + f2s(EntityX(Curr106\obj), 3) + ", " + f2s(EntityY(Curr106\obj), 3) + ", " + f2s(EntityZ(Curr106\obj), 3) + ")"
+				Text x - 50, 490, "SCP - 106 Idle: " + Curr106\Idle
+				Text x - 50, 510, "SCP - 106 State: " + Curr106\State
 			EndIf
 			offset% = 0
 			For npc.NPCs = Each NPCs
 				If npc\NPCtype = NPCtype096 Then
-					MDText x - 50, 530, "SCP - 096 Position: (" + f2s(EntityX(npc\obj), 3) + ", " + f2s(EntityY(npc\obj), 3) + ", " + f2s(EntityZ(npc\obj), 3) + ")"
-					MDText x - 50, 550, "SCP - 096 Idle: " + npc\Idle
-					MDText x - 50, 570, "SCP - 096 State: " + npc\State
-					MDText x - 50, 590, "SCP - 096 Speed: " + f2s(npc\currspeed, 5)
+					Text x - 50, 530, "SCP - 096 Position: (" + f2s(EntityX(npc\obj), 3) + ", " + f2s(EntityY(npc\obj), 3) + ", " + f2s(EntityZ(npc\obj), 3) + ")"
+					Text x - 50, 550, "SCP - 096 Idle: " + npc\Idle
+					Text x - 50, 570, "SCP - 096 State: " + npc\State
+					Text x - 50, 590, "SCP - 096 Speed: " + f2s(npc\currspeed, 5)
 				EndIf
 				If npc\NPCtype = NPCtypeMTF Then
-					MDText x - 50, 620 + 60 * offset, "MTF " + offset + " Position: (" + f2s(EntityX(npc\obj), 3) + ", " + f2s(EntityY(npc\obj), 3) + ", " + f2s(EntityZ(npc\obj), 3) + ")"
-					MDText x - 50, 640 + 60 * offset, "MTF " + offset + " State: " + npc\State
-					MDText x - 50, 660 + 60 * offset, "MTF " + offset + " LastSeen: " + npc\lastseen					
+					Text x - 50, 620 + 60 * offset, "MTF " + offset + " Position: (" + f2s(EntityX(npc\obj), 3) + ", " + f2s(EntityY(npc\obj), 3) + ", " + f2s(EntityZ(npc\obj), 3) + ")"
+					Text x - 50, 640 + 60 * offset, "MTF " + offset + " State: " + npc\State
+					Text x - 50, 660 + 60 * offset, "MTF " + offset + " LastSeen: " + npc\lastseen					
 					offset = offset + 1
 				EndIf
 			Next
 			If PlayerRoom\RoomTemplate\Name$ = "dimension1499"
-				MDText x + 350, 50, "Current Chunk X/Z: ("+(Int((EntityX(Collider)+20)/40))+", "+(Int((EntityZ(Collider)+20)/40))+")"
+				Text x + 350, 50, "Current Chunk X/Z: ("+(Int((EntityX(Collider)+20)/40))+", "+(Int((EntityZ(Collider)+20)/40))+")"
 				Local CH_Amount% = 0
 				For ch.Chunk = Each Chunk
 					CH_Amount = CH_Amount + 1
 				Next
-				MDText x + 350, 70, "Current Chunk Amount: "+CH_Amount
+				Text x + 350, 70, "Current Chunk Amount: "+CH_Amount
 			Else
-				MDText x + 350, 50, "Current Room Position: ("+PlayerRoom\x+", "+PlayerRoom\y+", "+PlayerRoom\z+")"
+				Text x + 350, 50, "Current Room Position: ("+PlayerRoom\x+", "+PlayerRoom\y+", "+PlayerRoom\z+")"
 			EndIf
 			GlobalMemoryStatus m.MEMORYSTATUS
-			MDText x + 350, 90, (m\dwAvailPhys%/1024/1024)+" MB/"+(m\dwTotalPhys%/1024/1024)+" MB ("+(m\dwAvailPhys%/1024)+" KB/"+(m\dwTotalPhys%/1024)+" KB)"
-			MDText x + 350, 110, "Triangles rendered: "+CurrTrisAmount
-			MDText x + 350, 130, "Active textures: "+ActiveTextures()
-		    MDText x + 350, 150, "SCP-427 state (secs): "+Int(I_427\Timer/70.0)
-			MDText x + 350, 170, "SCP-008 infection: "+Infect
+			Text x + 350, 90, (m\dwAvailPhys%/1024/1024)+" MB/"+(m\dwTotalPhys%/1024/1024)+" MB ("+(m\dwAvailPhys%/1024)+" KB/"+(m\dwTotalPhys%/1024)+" KB)"
+			Text x + 350, 110, "Triangles rendered: "+CurrTrisAmount
+			Text x + 350, 130, "Active textures: "+ActiveTextures()
+		    Text x + 350, 150, "SCP-427 state (secs): "+Int(I_427\Timer/70.0)
+			Text x + 350, 170, "SCP-008 infection: "+Infect
 			For i = 0 To 5
-				MDText x + 350, 190+(20*i), "SCP-1025 State "+i+": "+SCP1025state[i]
+				Text x + 350, 190+(20*i), "SCP-1025 State "+i+": "+SCP1025state[i]
 			Next
 			If SelectedMonitor <> Null Then
-				MDText x + 350, 310, "Current monitor: "+SelectedMonitor\ScrObj
+				Text x + 350, 310, "Current monitor: "+SelectedMonitor\ScrObj
 			Else
-				MDText x + 350, 310, "Current monitor: NULL"
+				Text x + 350, 310, "Current monitor: NULL"
 			EndIf
 			
 			SetFont Font1
@@ -4882,16 +4882,16 @@ Function DrawGUI()
 			If KeypadMSG <> "" Then 
 				KeypadTimer = KeypadTimer-FPSfactor2
 				
-				If (KeypadTimer Mod 70) < 35 Then MDText GraphicWidth/2, y+124*scale, KeypadMSG, True,True
+				If (KeypadTimer Mod 70) < 35 Then Text GraphicWidth/2, y+124*scale, KeypadMSG, True,True
 				If KeypadTimer =<0 Then
 					KeypadMSG = ""
 					SelectedDoor = Null
 					MouseXSpeed() : MouseYSpeed() : MouseZSpeed() : mouse_x_speed_1#=0.0 : mouse_y_speed_1#=0.0
 				EndIf
 			Else
-				MDText GraphicWidth/2, y+70*scale, "ACCESS CODE: ",True,True	
+				Text GraphicWidth/2, y+70*scale, "ACCESS CODE: ",True,True	
 				SetFont Font4
-				MDText GraphicWidth/2, y+124*scale, KeypadInput,True,True	
+				Text GraphicWidth/2, y+124*scale, KeypadInput,True,True	
 			EndIf
 			
 			x = x+44*scale
@@ -5071,7 +5071,7 @@ Function DrawGUI()
 			;drawimage(OtherOpen\SecondInv[n].InvIMG, x + width / 2 - 32, y + height / 2 - 32)
 				If isMouseOn Then
 					Color 255, 255, 255	
-					MDText(x + width / 2, y + height + spacing - 15, OtherOpen\SecondInv[n]\itemtemplate\name, True)				
+					Text(x + width / 2, y + height + spacing - 15, OtherOpen\SecondInv[n]\itemtemplate\name, True)				
 					If SelectedItem = Null Then
 						If MouseHit1 Then
 							SelectedItem = OtherOpen\SecondInv[n]
@@ -5334,9 +5334,9 @@ Function DrawGUI()
 						
 						SetFont Font1
 						Color 0,0,0
-						MDText(x + width / 2 + 1, y + height + spacing - 15 + 1, Inventory(n)\name, True)							
+						Text(x + width / 2 + 1, y + height + spacing - 15 + 1, Inventory(n)\name, True)							
 						Color 255, 255, 255	
-						MDText(x + width / 2, y + height + spacing - 15, Inventory(n)\name, True)	
+						Text(x + width / 2, y + height + spacing - 15, Inventory(n)\name, True)	
 						
 					EndIf
 				EndIf
@@ -5920,7 +5920,7 @@ Function DrawGUI()
 								SelectedItem\itemtemplate\img = LoadImage_Strict("GFX\items\bn.it")
 								SetBuffer ImageBuffer(SelectedItem\itemtemplate\img)
 								Color 0,0,0
-								MDText 277, 469, AccessCode, True, True
+								Text 277, 469, AccessCode, True, True
 								Color 255,255,255
 								SetBuffer BackBuffer()
 							Case "Document SCP-372"
@@ -5932,7 +5932,7 @@ Function DrawGUI()
 								SetFont Font5
 								temp = ((Int(AccessCode)*3) Mod 10000)
 								If temp < 1000 Then temp = temp+1000
-								MDText 383*MenuScale, 734*MenuScale, temp, True, True
+								Text 383*MenuScale, 734*MenuScale, temp, True, True
 								Color 255,255,255
 								SetBuffer BackBuffer()
 							Case "Movie Ticket"
@@ -6346,7 +6346,7 @@ Function DrawGUI()
 							EndIf	
 							
 							SetFont Font3
-							MDText(x+60, y, "CHN")						
+							Text(x+60, y, "CHN")						
 							
 							If SelectedItem\itemtemplate\tempname = "veryfineradio" Then ;"KOODIKANAVA"
 								ResumeChannel(RadioCHN(0))
@@ -6373,7 +6373,7 @@ Function DrawGUI()
 								Next
 								
 								SetFont Font4
-								MDText(x+97, y+16, Rand(0,9),True,True)
+								Text(x+97, y+16, Rand(0,9),True,True)
 								
 							Else
 								For i = 2 To 6
@@ -6389,13 +6389,13 @@ Function DrawGUI()
 								Next
 								
 								SetFont Font4
-								MDText(x+97, y+16, Int(SelectedItem\state2+1),True,True)
+								Text(x+97, y+16, Int(SelectedItem\state2+1),True,True)
 							EndIf
 							
 							SetFont Font3
 							If strtemp <> "" Then
 								strtemp = Right(Left(strtemp, (Int(MilliSecs2()/300) Mod Len(strtemp))),10)
-								MDText(x+32, y+33, strtemp)
+								Text(x+32, y+33, strtemp)
 							EndIf
 							
 							SetFont Font1
@@ -6628,8 +6628,8 @@ Function DrawGUI()
 					If (Not NavWorks) Then
 						If (MilliSecs2() Mod 1000) > 300 Then
 							Color(200, 0, 0)
-							MDText(x, y + height / 2 - 80, "ERROR 06", True)
-							MDText(x, y + height / 2 - 60, "LOCATION UNKNOWN", True)						
+							Text(x, y + height / 2 - 80, "ERROR 06", True)
+							Text(x, y + height / 2 - 60, "LOCATION UNKNOWN", True)						
 						EndIf
 					Else
 						
@@ -6702,7 +6702,7 @@ Function DrawGUI()
 							EndIf
 							If (MilliSecs2() Mod 1000) > 300 Then
 								If SelectedItem\itemtemplate\name <> "S-NAV 310 Navigator" And SelectedItem\itemtemplate\name <> "S-NAV Navigator Ultimate" Then
-									MDText(x - width/2 + 10, y - height/2 + 10, "MAP DATABASE OFFLINE")
+									Text(x - width/2 + 10, y - height/2 + 10, "MAP DATABASE OFFLINE")
 								EndIf
 								
 								yawvalue = EntityYaw(Collider)-90
@@ -6723,7 +6723,7 @@ Function DrawGUI()
 									If dist < 8.0 * 4 Then
 										Color 100, 0, 0
 										Oval(x - dist * 3, y - 7 - dist * 3, dist * 3 * 2, dist * 3 * 2, False)
-										MDText(x - width / 2 + 10, y - height / 2 + 30, "SCP-173")
+										Text(x - width / 2 + 10, y - height / 2 + 30, "SCP-173")
 										SCPs_found% = SCPs_found% + 1
 									EndIf
 								EndIf
@@ -6732,7 +6732,7 @@ Function DrawGUI()
 									If dist < 8.0 * 4 Then
 										Color 100, 0, 0
 										Oval(x - dist * 1.5, y - 7 - dist * 1.5, dist * 3, dist * 3, False)
-										MDText(x - width / 2 + 10, y - height / 2 + 30 + (20*SCPs_found), "SCP-106")
+										Text(x - width / 2 + 10, y - height / 2 + 30 + (20*SCPs_found), "SCP-106")
 										SCPs_found% = SCPs_found% + 1
 									EndIf
 								EndIf
@@ -6741,7 +6741,7 @@ Function DrawGUI()
 									If dist < 8.0 * 4 Then
 										Color 100, 0, 0
 										Oval(x - dist * 1.5, y - 7 - dist * 1.5, dist * 3, dist * 3, False)
-										MDText(x - width / 2 + 10, y - height / 2 + 30 + (20*SCPs_found), "SCP-096")
+										Text(x - width / 2 + 10, y - height / 2 + 30 + (20*SCPs_found), "SCP-096")
 										SCPs_found% = SCPs_found% + 1
 									EndIf
 								EndIf
@@ -6752,7 +6752,7 @@ Function DrawGUI()
 											If (Not np\HideFromNVG) Then
 												Color 100, 0, 0
 												Oval(x - dist * 1.5, y - 7 - dist * 1.5, dist * 3, dist * 3, False)
-												MDText(x - width / 2 + 10, y - height / 2 + 30 + (20*SCPs_found), "SCP-049")
+												Text(x - width / 2 + 10, y - height / 2 + 30 + (20*SCPs_found), "SCP-049")
 												SCPs_found% = SCPs_found% + 1
 											EndIf
 										EndIf
@@ -6764,7 +6764,7 @@ Function DrawGUI()
 										dist = Rnd(4.0, 8.0)
 										Color 100, 0, 0
 										Oval(x - dist * 1.5, y - 7 - dist * 1.5, dist * 3, dist * 3, False)
-										MDText(x - width / 2 + 10, y - height / 2 + 30 + (20*SCPs_found), "SCP-895")
+										Text(x - width / 2 + 10, y - height / 2 + 30 + (20*SCPs_found), "SCP-895")
 									EndIf
 								EndIf
 							End If
@@ -7144,23 +7144,23 @@ Function DrawMenu()
 		
 		If AchievementsMenu > 0 Then
 			SetFont Font2
-			MDText(x, y-(122-45)*MenuScale, "ACHIEVEMENTS",False,True)
+			Text(x, y-(122-45)*MenuScale, "ACHIEVEMENTS",False,True)
 			SetFont Font1
 		ElseIf OptionsMenu > 0 Then
 			SetFont Font2
-			MDText(x, y-(122-45)*MenuScale, "OPTIONS",False,True)
+			Text(x, y-(122-45)*MenuScale, "OPTIONS",False,True)
 			SetFont Font1
 		ElseIf QuitMSG > 0 Then
 			SetFont Font2
-			MDText(x, y-(122-45)*MenuScale, "QUIT?",False,True)
+			Text(x, y-(122-45)*MenuScale, "QUIT?",False,True)
 			SetFont Font1
 		ElseIf KillTimer >= 0 Then
 			SetFont Font2
-			MDText(x, y-(122-45)*MenuScale, "PAUSED",False,True)
+			Text(x, y-(122-45)*MenuScale, "PAUSED",False,True)
 			SetFont Font1
 		Else
 			SetFont Font2
-			MDText(x, y-(122-45)*MenuScale, "YOU DIED",False,True)
+			Text(x, y-(122-45)*MenuScale, "YOU DIED",False,True)
 			SetFont Font1
 		End If		
 		
@@ -7171,9 +7171,9 @@ Function DrawMenu()
 		
 		If AchievementsMenu <= 0 And OptionsMenu <= 0 And QuitMSG <= 0
 			SetFont Font1
-			MDText x, y, "Difficulty: "+SelectedDifficulty\name
-			MDText x, y+20*MenuScale, "Save: "+CurrSave
-			MDText x, y+40*MenuScale, "Map seed: "+RandomSeed
+			Text x, y, "Difficulty: "+SelectedDifficulty\name
+			Text x, y+20*MenuScale, "Save: "+CurrSave
+			Text x, y+40*MenuScale, "Map seed: "+RandomSeed
 		ElseIf AchievementsMenu <= 0 And OptionsMenu > 0 And QuitMSG <= 0 And KillTimer >= 0
 			If DrawButton(x + 101 * MenuScale, y + 390 * MenuScale, 230 * MenuScale, 60 * MenuScale, "Back") Then
 				AchievementsMenu = 0
@@ -7215,7 +7215,7 @@ Function DrawMenu()
 					y=y+50*MenuScale
 					
 					Color 100,100,100
-					MDText(x, y+4, "Enable bump mapping:")	
+					Text(x, y+4, "Enable bump mapping:")	
 					BumpEnabled = DrawTick(x + 270 * MenuScale, y + MenuScale, BumpEnabled, True)
 					If MouseOn(x + 270 * MenuScale, y + MenuScale, 20*MenuScale,20*MenuScale) And OnSliderID=0
 						DrawOptionsTooltip(tx,ty,tw,th,"bump")
@@ -7224,7 +7224,7 @@ Function DrawMenu()
 					y=y+30*MenuScale
 					
 					Color 255,255,255
-					MDText(x, y+2, "VSync:")
+					Text(x, y+2, "VSync:")
 					Vsync% = DrawTick(x + 270 * MenuScale, y + MenuScale, Vsync%)
 					If MouseOn(x+270*MenuScale,y+MenuScale,20*MenuScale,20*MenuScale) And OnSliderID=0
 						DrawOptionsTooltip(tx,ty,tw,th,"vsync")
@@ -7233,7 +7233,7 @@ Function DrawMenu()
 					y=y+30*MenuScale
 					
 					Color 255,255,255
-					MDText(x, y, "Anti-aliasing:")
+					Text(x, y, "Anti-aliasing:")
 					Opt_AntiAlias = DrawTick(x + 270 * MenuScale, y + MenuScale, Opt_AntiAlias%)
 					If MouseOn(x+270*MenuScale,y+MenuScale,20*MenuScale,20*MenuScale) And OnSliderID=0
 						DrawOptionsTooltip(tx,ty,tw,th,"antialias")
@@ -7242,7 +7242,7 @@ Function DrawMenu()
 					y=y+30*MenuScale
 					
 					Color 255,255,255
-					MDText(x, y+2, "Enable room lights:")
+					Text(x, y+2, "Enable room lights:")
 					EnableRoomLights = DrawTick(x + 270 * MenuScale, y + MenuScale, EnableRoomLights)
 					If MouseOn(x+270*MenuScale,y+MenuScale,20*MenuScale,20*MenuScale) And OnSliderID=0
 						DrawOptionsTooltip(tx,ty,tw,th,"roomlights")
@@ -7252,7 +7252,7 @@ Function DrawMenu()
 					
 					ScreenGamma = (SlideBar(x + 270*MenuScale, y+6*MenuScale, 100*MenuScale, ScreenGamma*50.0)/50.0)
 					Color 255,255,255
-					MDText(x, y+7, "Screen gamma")
+					Text(x, y+7, "Screen gamma")
 					If MouseOn(x+270*MenuScale,y+6*MenuScale,100*MenuScale+14,20) And OnSliderID=0
 						DrawOptionsTooltip(tx,ty,tw,th,"gamma",ScreenGamma)
 					EndIf
@@ -7262,7 +7262,7 @@ Function DrawMenu()
 					y=y+50*MenuScale
 					
 					Color 255,255,255
-					MDText(x, y, "Particle amount:")
+					Text(x, y, "Particle amount:")
 					ParticleAmount = Slider3(x+270*MenuScale,y+6*MenuScale,100*MenuScale,ParticleAmount,2,"MINIMAL","REDUCED","FULL")
 					If (MouseOn(x + 270 * MenuScale, y-6*MenuScale, 100*MenuScale+14, 20) And OnSliderID=0) Or OnSliderID=2
 						DrawOptionsTooltip(tx,ty,tw,th,"particleamount",ParticleAmount)
@@ -7271,7 +7271,7 @@ Function DrawMenu()
 					y=y+50*MenuScale
 					
 					Color 255,255,255
-					MDText(x, y, "Texture LOD Bias:")
+					Text(x, y, "Texture LOD Bias:")
 					TextureDetails = Slider5(x+270*MenuScale,y+6*MenuScale,100*MenuScale,TextureDetails,3,"0.8","0.4","0.0","-0.4","-0.8")
 					Select TextureDetails%
 						Case 0
@@ -7292,7 +7292,7 @@ Function DrawMenu()
 					
 					y=y+50*MenuScale
 					Color 100,100,100
-					MDText(x, y+4, "Save textures in the VRAM:")	
+					Text(x, y+4, "Save textures in the VRAM:")	
 					EnableVRam = DrawTick(x + 270 * MenuScale, y + MenuScale, EnableVRam, True)
 					If MouseOn(x + 270 * MenuScale, y + MenuScale, 20*MenuScale,20*MenuScale) And OnSliderID=0
 						DrawOptionsTooltip(tx,ty,tw,th,"vram")
@@ -7306,7 +7306,7 @@ Function DrawMenu()
 					
 					MusicVolume = (SlideBar(x + 250*MenuScale, y-4*MenuScale, 100*MenuScale, MusicVolume*100.0)/100.0)
 					Color 255,255,255
-					MDText(x, y+2, "Music volume:")
+					Text(x, y+2, "Music volume:")
 					If MouseOn(x+250*MenuScale,y-4*MenuScale,100*MenuScale+14,20)
 						DrawOptionsTooltip(tx,ty,tw,th,"musicvol",MusicVolume)
 					EndIf
@@ -7316,7 +7316,7 @@ Function DrawMenu()
 					PrevSFXVolume = (SlideBar(x + 250*MenuScale, y-4*MenuScale, 100*MenuScale, SFXVolume*100.0)/100.0)
 					If (Not DeafPlayer) Then SFXVolume# = PrevSFXVolume#
 					Color 255,255,255
-					MDText(x, y+2, "Sound volume:")
+					Text(x, y+2, "Sound volume:")
 					If MouseOn(x+250*MenuScale,y-4*MenuScale,100*MenuScale+14,20)
 						DrawOptionsTooltip(tx,ty,tw,th,"soundvol",PrevSFXVolume)
 					EndIf
@@ -7324,7 +7324,7 @@ Function DrawMenu()
 					y = y + 30*MenuScale
 					
 					Color 100,100,100
-					MDText x, y+3, "Sound auto-release:"
+					Text x, y+3, "Sound auto-release:"
 					EnableSFXRelease = DrawTick(x + 270 * MenuScale, y + MenuScale, EnableSFXRelease,True)
 					If MouseOn(x+270*MenuScale,y+MenuScale,20*MenuScale,20*MenuScale)
 						DrawOptionsTooltip(tx,ty,tw,th+220*MenuScale,"sfxautorelease")
@@ -7333,7 +7333,7 @@ Function DrawMenu()
 					y = y + 30*MenuScale
 					
 					Color 100,100,100
-					MDText x, y+3, "Enable user tracks:"
+					Text x, y+3, "Enable user tracks:"
 					EnableUserTracks = DrawTick(x + 270 * MenuScale, y + MenuScale, EnableUserTracks,True)
 					If MouseOn(x+270*MenuScale,y+MenuScale,20*MenuScale,20*MenuScale)
 						DrawOptionsTooltip(tx,ty,tw,th,"usertrack")
@@ -7342,12 +7342,12 @@ Function DrawMenu()
 					If EnableUserTracks
 						y = y + 30 * MenuScale
 						Color 255,255,255
-						MDText x, y+3, "User track mode:"
+						Text x, y+3, "User track mode:"
 						UserTrackMode = DrawTick(x + 270 * MenuScale, y + MenuScale, UserTrackMode)
 						If UserTrackMode
-							MDText x, y + 20 * MenuScale+3, "Repeat"
+							Text x, y + 20 * MenuScale+3, "Repeat"
 						Else
-							MDText x, y + 20 * MenuScale+3, "Random"
+							Text x, y + 20 * MenuScale+3, "Random"
 						EndIf
 						If MouseOn(x+270*MenuScale,y+MenuScale,20*MenuScale,20*MenuScale)
 							DrawOptionsTooltip(tx,ty,tw,th,"usertrackmode")
@@ -7365,7 +7365,7 @@ Function DrawMenu()
 					
 					MouseSens = (SlideBar(x + 270*MenuScale, y-4*MenuScale, 100*MenuScale, (MouseSens+0.5)*100.0)/100.0)-0.5
 					Color(255, 255, 255)
-					MDText(x, y+2, "Mouse sensitivity:")
+					Text(x, y+2, "Mouse sensitivity:")
 					If MouseOn(x+270*MenuScale,y-4*MenuScale,100*MenuScale+14,20)
 						DrawOptionsTooltip(tx,ty,tw,th,"mousesensitivity",MouseSens)
 					EndIf
@@ -7373,7 +7373,7 @@ Function DrawMenu()
 					y = y + 30*MenuScale
 					
 					Color(255, 255, 255)
-					MDText(x, y+4, "Invert mouse Y-axis:")
+					Text(x, y+4, "Invert mouse Y-axis:")
 					InvertMouse = DrawTick(x + 270 * MenuScale, y + MenuScale, InvertMouse)
 					If MouseOn(x+270*MenuScale,y+MenuScale,20*MenuScale,20*MenuScale)
 						DrawOptionsTooltip(tx,ty,tw,th,"mouseinvert")
@@ -7383,7 +7383,7 @@ Function DrawMenu()
 					
 					MouseSmooth = (SlideBar(x + 270*MenuScale, y-4*MenuScale, 100*MenuScale, (MouseSmooth)*50.0)/50.0)
 					Color(255, 255, 255)
-					MDText(x, y+2, "Mouse smoothing:")
+					Text(x, y+2, "Mouse smoothing:")
 					If MouseOn(x+270*MenuScale,y-4*MenuScale,100*MenuScale+14,20)
 						DrawOptionsTooltip(tx,ty,tw,th,"mousesmoothing",MouseSmooth)
 					EndIf
@@ -7391,29 +7391,29 @@ Function DrawMenu()
 					Color(255, 255, 255)
 					
 					y = y + 30*MenuScale
-					MDText(x, y, "Control configuration:")
+					Text(x, y, "Control configuration:")
 					y = y + 10*MenuScale
 					
-					MDText(x, y + 20 * MenuScale+2, "Move Forward")
+					Text(x, y + 20 * MenuScale+2, "Move Forward")
 					InputBox(x + 200 * MenuScale, y + 20 * MenuScale,100*MenuScale,20*MenuScale,KeyName(Min(KEY_UP,210)),5)		
-					MDText(x, y + 40 * MenuScale+2, "Strafe Left")
+					Text(x, y + 40 * MenuScale+2, "Strafe Left")
 					InputBox(x + 200 * MenuScale, y + 40 * MenuScale,100*MenuScale,20*MenuScale,KeyName(Min(KEY_LEFT,210)),3)	
-					MDText(x, y + 60 * MenuScale+2, "Move Backward")
+					Text(x, y + 60 * MenuScale+2, "Move Backward")
 					InputBox(x + 200 * MenuScale, y + 60 * MenuScale,100*MenuScale,20*MenuScale,KeyName(Min(KEY_DOWN,210)),6)				
-					MDText(x, y + 80 * MenuScale+2, "Strafe Right")
+					Text(x, y + 80 * MenuScale+2, "Strafe Right")
 					InputBox(x + 200 * MenuScale, y + 80 * MenuScale,100*MenuScale,20*MenuScale,KeyName(Min(KEY_RIGHT,210)),4)
 					
-					MDText(x, y + 100 * MenuScale+2, "Manual Blink")
+					Text(x, y + 100 * MenuScale+2, "Manual Blink")
 					InputBox(x + 200 * MenuScale, y + 100 * MenuScale,100*MenuScale,20*MenuScale,KeyName(Min(KEY_BLINK,210)),7)				
-					MDText(x, y + 120 * MenuScale+2, "Sprint")
+					Text(x, y + 120 * MenuScale+2, "Sprint")
 					InputBox(x + 200 * MenuScale, y + 120 * MenuScale,100*MenuScale,20*MenuScale,KeyName(Min(KEY_SPRINT,210)),8)
-					MDText(x, y + 140 * MenuScale+2, "Open/Close Inventory")
+					Text(x, y + 140 * MenuScale+2, "Open/Close Inventory")
 					InputBox(x + 200 * MenuScale, y + 140 * MenuScale,100*MenuScale,20*MenuScale,KeyName(Min(KEY_INV,210)),9)
-					MDText(x, y + 160 * MenuScale+2, "Crouch")
+					Text(x, y + 160 * MenuScale+2, "Crouch")
 					InputBox(x + 200 * MenuScale, y + 160 * MenuScale,100*MenuScale,20*MenuScale,KeyName(Min(KEY_CROUCH,210)),10)
-					MDText(x, y + 180 * MenuScale+2, "Quick Save")
+					Text(x, y + 180 * MenuScale+2, "Quick Save")
 					InputBox(x + 200 * MenuScale, y + 180 * MenuScale,100*MenuScale,20*MenuScale,KeyName(Min(KEY_SAVE,210)),11)	
-					MDText(x, y + 200 * MenuScale+2, "Open/Close Console")
+					Text(x, y + 200 * MenuScale+2, "Open/Close Console")
 					InputBox(x + 200 * MenuScale, y + 200 * MenuScale,100*MenuScale,20*MenuScale,KeyName(Min(KEY_CONSOLE,210)),12)
 					
 					If MouseOn(x,y,300*MenuScale,220*MenuScale)
@@ -7455,7 +7455,7 @@ Function DrawMenu()
 					y = y + 50*MenuScale
 					
 					Color 255,255,255				
-					MDText(x, y+3, "Show HUD:")	
+					Text(x, y+3, "Show HUD:")	
 					HUDenabled = DrawTick(x + 270 * MenuScale, y + MenuScale, HUDenabled)
 					If MouseOn(x+270*MenuScale,y+MenuScale,20*MenuScale,20*MenuScale)
 						DrawOptionsTooltip(tx,ty,tw,th,"hud")
@@ -7464,7 +7464,7 @@ Function DrawMenu()
 					y = y + 30*MenuScale
 					
 					Color 255,255,255
-					MDText(x, y+3, "Enable console:")
+					Text(x, y+3, "Enable console:")
 					CanOpenConsole = DrawTick(x +270 * MenuScale, y + MenuScale, CanOpenConsole)
 					If MouseOn(x+270*MenuScale,y+MenuScale,20*MenuScale,20*MenuScale)
 						DrawOptionsTooltip(tx,ty,tw,th,"consoleenable")
@@ -7473,7 +7473,7 @@ Function DrawMenu()
 					y = y + 30*MenuScale
 					
 					Color 255,255,255
-					MDText(x, y+3, "Open console on error:")
+					Text(x, y+3, "Open console on error:")
 					ConsoleOpening = DrawTick(x + 270 * MenuScale, y + MenuScale, ConsoleOpening)
 					If MouseOn(x+270*MenuScale,y+MenuScale,20*MenuScale,20*MenuScale)
 						DrawOptionsTooltip(tx,ty,tw,th,"consoleerror")
@@ -7482,7 +7482,7 @@ Function DrawMenu()
 					y = y + 50*MenuScale
 					
 					Color 255,255,255
-					MDText(x, y+3, "Achievement popups:")
+					Text(x, y+3, "Achievement popups:")
 					AchvMSGenabled% = DrawTick(x + 270 * MenuScale, y, AchvMSGenabled%)
 					If MouseOn(x+270*MenuScale,y+MenuScale,20*MenuScale,20*MenuScale)
 						DrawOptionsTooltip(tx,ty,tw,th,"achpopup")
@@ -7491,7 +7491,7 @@ Function DrawMenu()
 					y = y + 50*MenuScale
 					
 					Color 255,255,255
-					MDText(x, y+3, "Show FPS:")
+					Text(x, y+3, "Show FPS:")
 					ShowFPS% = DrawTick(x + 270 * MenuScale, y, ShowFPS%)
 					If MouseOn(x+270*MenuScale,y+MenuScale,20*MenuScale,20*MenuScale)
 						DrawOptionsTooltip(tx,ty,tw,th,"showfps")
@@ -7500,7 +7500,7 @@ Function DrawMenu()
 					y = y + 30*MenuScale
 					
 					Color 255,255,255
-					MDText(x, y+3, "Framelimit:")
+					Text(x, y+3, "Framelimit:")
 					
 					Color 255,255,255
 					If DrawTick(x + 270 * MenuScale, y, CurrFrameLimit > 0.0) Then
@@ -7511,7 +7511,7 @@ Function DrawMenu()
 						CurrFrameLimit# = Max(CurrFrameLimit, 0.01)
 						Framelimit% = 19+(CurrFrameLimit*100.0)
 						Color 255,255,0
-						MDText(x + 5 * MenuScale, y + 25 * MenuScale, Framelimit%+" FPS")
+						Text(x + 5 * MenuScale, y + 25 * MenuScale, Framelimit%+" FPS")
 					Else
 						CurrFrameLimit# = 0.0
 						Framelimit = 0
@@ -7667,7 +7667,7 @@ Function DrawMenu()
 						DrawFrame(x,y,390*MenuScale, 60*MenuScale)
 						Color (100, 100, 100)
 						SetFont Font2
-						MDText(x + (390*MenuScale) / 2, y + (60*MenuScale) / 2, "Load Game", True, True)
+						Text(x + (390*MenuScale) / 2, y + (60*MenuScale) / 2, "Load Game", True, True)
 					EndIf
 					y = y + 75*MenuScale
 			EndIf
@@ -7722,7 +7722,7 @@ Function DrawMenu()
 				Else
 					DrawButton(x, y, 390*MenuScale, 60*MenuScale, "")
 					Color 50,50,50
-					MDText(x + 185*MenuScale, y + 30*MenuScale, "Load Game", True, True)
+					Text(x + 185*MenuScale, y + 30*MenuScale, "Load Game", True, True)
 				EndIf
 				If DrawButton(x, y + 80*MenuScale, 390*MenuScale, 60*MenuScale, "Quit to Menu") Then
 					NullGame()
@@ -11275,10 +11275,10 @@ Function RenderWorld2()
 			Local plusY% = 0
 			If hasBattery=1 Then plusY% = 40
 			
-			MDText GraphicWidth/2,(20+plusY)*MenuScale,"REFRESHING DATA IN",True,False
+			Text GraphicWidth/2,(20+plusY)*MenuScale,"REFRESHING DATA IN",True,False
 			
-			MDText GraphicWidth/2,(60+plusY)*MenuScale,Max(f2s(NVTimer/60.0,1),0.0),True,False
-			MDText GraphicWidth/2,(100+plusY)*MenuScale,"SECONDS",True,False
+			Text GraphicWidth/2,(60+plusY)*MenuScale,Max(f2s(NVTimer/60.0,1),0.0),True,False
+			Text GraphicWidth/2,(100+plusY)*MenuScale,"SECONDS",True,False
 			
 			temp% = CreatePivot() : temp2% = CreatePivot()
 			PositionEntity temp, EntityX(Collider), EntityY(Collider), EntityZ(Collider)
@@ -11311,8 +11311,8 @@ Function RenderWorld2()
 						EndIf
 						
 						If (Not IsNVGBlinking%)
-						MDText GraphicWidth / 2 + xvalue * (GraphicWidth / 2),GraphicHeight / 2 - yvalue * (GraphicHeight / 2),np\NVName,True,True
-						MDText GraphicWidth / 2 + xvalue * (GraphicWidth / 2),GraphicHeight / 2 - yvalue * (GraphicHeight / 2) + 30.0 * MenuScale,f2s(dist,1)+" m",True,True
+						Text GraphicWidth / 2 + xvalue * (GraphicWidth / 2),GraphicHeight / 2 - yvalue * (GraphicHeight / 2),np\NVName,True,True
+						Text GraphicWidth / 2 + xvalue * (GraphicWidth / 2),GraphicHeight / 2 - yvalue * (GraphicHeight / 2) + 30.0 * MenuScale,f2s(dist,1)+" m",True,True
 					EndIf
 				EndIf
 				EndIf
@@ -11355,7 +11355,7 @@ Function RenderWorld2()
 			Color 255,0,0
 			SetFont Font3
 			
-			MDText GraphicWidth/2,20*MenuScale,"WARNING: LOW BATTERY",True,False
+			Text GraphicWidth/2,20*MenuScale,"WARNING: LOW BATTERY",True,False
 			Color 255,255,255
 		EndIf
 	EndIf

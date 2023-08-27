@@ -469,17 +469,17 @@ Function Download(link$, savepath$ = "", savefile$ = "", latest$="")
 						SetBuffer BackBuffer()
 						Cls
 						
-						MDText 5,5,"Downloading "+latest
+						Text 5,5,"Downloading "+latest
 						
 						Color 255,255,255
-						MDText 5,165,Str(Floor(((Float(pos)/1024.0)/1024.0)*100.0)/100.0)+"MB out of "+Str(Floor(((Float(conlen)/1024.0)/1024.0)*100.0)/100.0)+"MB downloaded"
+						Text 5,165,Str(Floor(((Float(pos)/1024.0)/1024.0)*100.0)/100.0)+"MB out of "+Str(Floor(((Float(conlen)/1024.0)/1024.0)*100.0)/100.0)+"MB downloaded"
 						
 						Rect 14,198,614,18,False
 						For i=0 To Int((Float(pos)/Float(conlen))*61.0)-1
 							DrawImage(BlinkMeterIMG, (i*10)+17, 200)
 						Next
 						
-						MDText 320,230,Int((Float(pos)/Float(conlen))*100.0)+"%",True,False
+						Text 320,230,Int((Float(pos)/Float(conlen))*100.0)+"%",True,False
 						
 						If DrawButton2(270,400,100,20,"Cancel",False) Then
 							CloseTCPStream(tcp)
@@ -566,7 +566,7 @@ Function CheckForUpdates%()
 	SetBuffer BackBuffer()
 	Cls
 	Color 255,255,255
-	MDText 320,240,"Checking for updates...",True,True
+	Text 320,240,"Checking for updates...",True,True
 	Flip
 	
     Local domainTXT$ = GetDomainTXT("version.scpcbgame.cn") ; this domain is for SCPCB chinese
