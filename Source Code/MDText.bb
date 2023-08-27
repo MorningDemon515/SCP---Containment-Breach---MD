@@ -4,7 +4,7 @@ Include "Source Code\BlitzEncode.bb"
 Function Text(x%, y%, txt$, xPos% = 0, yPos% = 0, a# = 1.0 )
 	Local oldr% = ColorRed() : Local oldg% = ColorGreen() : Local oldb% = ColorBlue()
 	Color oldr*a,oldg*a,oldb*a
-	Blitz_Text x,y,CUTA(txt),xPos,yPos
+	Blitz_Text x,y,txt,xPos,yPos
 	Color oldr,oldg,oldb
 	Return 
 End Function

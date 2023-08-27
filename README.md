@@ -1,6 +1,6 @@
-# SCP - Containment Breach MD v4.0
+# SCP - Containment Breach MD v5.0
 
-这个版本基于SCP - Containmnet Breach vTSS (https://github.com/ZiYueCommentary/scpcb-tss)
+游戏基于Regalis制作的SCP - Containment Breach
 
 游戏遵循 [知识共享许可协议 BY-SA 4.0]（即必须署名、可商用、可二创、可二创商用）
 

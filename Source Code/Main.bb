@@ -1,4 +1,4 @@
-; SCP - Containment Breach MD v4.0
+; SCP - Containment Breach MD v5.0
 ;The engine is Blitz3DTSS
 ; Original official website link: https://www.scpcbgame.com
 Local InitErrorStr$ = ""
@@ -30,7 +30,7 @@ Global UpdaterFont%
 Global Font1%, Font2%, Font3%, Font4%, Font5%
 Global ConsoleFont%
 
-Global VersionNumber$ = "4.0"
+Global VersionNumber$ = "5.0"
 Global CompatibleNumber$ = "1.3.11" ;Only change this if the version given isn't working with the current build version - ENDSHN
 
 Global MenuWhite%, MenuBlack%

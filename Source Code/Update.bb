@@ -559,7 +559,7 @@ Function CheckForUpdates%()
 	
 	;If GetINIInt(OptionFile,"box_of_horrors","check for updates")=False Then Return
 	
-	AppTitle "SCP - Containment Breach MD v4.0 Update Checker"
+	AppTitle "SCP - Containment Breach MD v5.0 Update Checker"
 	
 	If !UpdateCheckEnabled Then Return 0
 	
@@ -611,17 +611,19 @@ Function CheckForUpdates%()
 			chl.ChangeLogLines = New ChangeLogLines
 			chl\txt$ = "Update Checker."
 			chl.ChangeLogLines = New ChangeLogLines
-			chl\txt$ = "v4.0"
+			chl\txt$ = "v5.0"
 			chl.ChangeLogLines = New ChangeLogLines
-			chl\txt$ = "-Change encoding to ANSI."
+			chl\txt$ = "-Change encoding to UTF8."
 			chl.ChangeLogLines = New ChangeLogLines
-			chl\txt$ = "-Modified some textures."
+			chl\txt$ = "-Add B3D - RoomMesh Conversion."
 			chl.ChangeLogLines = New ChangeLogLines
-			chl\txt$ = "-Fixed some bugs."
+			chl\txt$ = "-Add CPU_Details."
 			chl.ChangeLogLines = New ChangeLogLines
-			chl\txt$ = "-Improve and use MDText."
+			chl\txt$ = "-Add LightMapPNG."
 			chl.ChangeLogLines = New ChangeLogLines
-			chl\txt$ = "-Removed graphics."
+			chl\txt$ = "-Add Map Creator."
+			chl.ChangeLogLines = New ChangeLogLines
+			chl\txt$ = "-Add MusicPlayer."
 		;EndIf
 		UpdaterFont = LoadFont_Strict("GFX\font\cour\Morning Demon.ttf",16)
 		
@@ -657,7 +659,7 @@ Function CheckForUpdates%()
             Color 255,255,255
 			Rect 480, 200, 140, 95
 			Color 0,0,0
-			RowText2("SCP - Containment Breach MD v4.0",482,210,137,90)
+			RowText2("SCP - Containment Breach MD v5.0",482,210,137,90)
 			
 			EndIf
 			y# = 201
@@ -679,7 +681,7 @@ Function CheckForUpdates%()
 				Return 0
 			EndIf
 			If DrawButton(LauncherWidth - 30 - 90 - 20, LauncherHeight - 65 - 70, 100, 30, "DOWNLOAD", False, False, False)
-				ExecFile("https://github.com/ZiYueCommentary/scpcb-tss")
+				ExecFile("https://space.bilibili.com/2116826849/dynamic")
 				Delay 100
 				End
 			EndIf

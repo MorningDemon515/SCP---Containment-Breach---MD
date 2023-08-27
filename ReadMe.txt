@@ -2,7 +2,7 @@
 
 ***********************************************************************************
 
-**************************    SCP - CONTAINMENT BREACH MD v4.0   **************************
+**************************    SCP - CONTAINMENT BREACH MD v5.0   **************************
 
 ***********************************************************************************
 
@@ -25,7 +25,7 @@ The source code of the game is available on GitHub: https://github.com/Regalis11
 
 **** HOW TO RUN IT **************************************
 
-	Run SCP - Containment Breach MD v4.0.exe in the game folder. 
+	Run SCP - Containment Breach MD.exe in the game folder. 
 	Select which resolution you want to use and click the LAUNCH-button.
 
 	SCP-CB MD v2.0 uses an engine called Blitz3DTSS, and since it's a fairly outdated one,

@@ -1,4 +1,12 @@
-﻿v4.0
+﻿v5.0
+-Change encoding to UTF8
+-Add B3D - RoomMesh Conversion
+-Add CPU_Details
+-Add LightMapPNG
+-Add Map Creator
+-Add MusicPlayer
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+v4.0
 -Change encoding to ANSI
 -Modified some textures
 -Fixed some bugs

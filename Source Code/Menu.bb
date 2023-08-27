@@ -1126,7 +1126,7 @@ Function UpdateLauncher()
 	BlinkMeterIMG% = LoadImage_Strict("GFX\blinkmeter.jpg")
 	CheckForUpdates()
 	
-	AppTitle "SCP - Containment Breach MD v4.0 Launcher"
+	AppTitle "SCP - Containment Breach MD v5.0 Launcher"
 	
 	Repeat
 		
