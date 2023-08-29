@@ -683,9 +683,9 @@ Function CheckForUpdates%()
 			If DrawButton(LauncherWidth - 30 - 90 - 20, LauncherHeight - 65 - 70, 100, 30, "DOWNLOAD", False, False, False)
 				ExecFile("https://space.bilibili.com/2116826849/dynamic")
 				Delay 100
-				End
+				;End
 			EndIf
-			If DrawButton(LauncherWidth - 30 - 90 - 20, LauncherHeight - 65 - 35, 100, 30, "START", False, False, False)
+			If DrawButton(LauncherWidth - 30 - 90 - 20, LauncherHeight - 65 - 35, 100, 30, "NEXT", False, False, False)
 				Delay 100
 				Exit
 			EndIf
