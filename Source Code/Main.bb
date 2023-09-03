@@ -1,13 +1,14 @@
 ; SCP - Containment Breach MD v5.0
 ;The engine is Blitz3DTSS
 ; Original official website link: https://www.scpcbgame.com
+Global LangFile$ = "Data\Local.ini"
 Local InitErrorStr$ = ""
 If FileSize("dplayx.dll")=0 Then InitErrorStr=InitErrorStr+ "dplayx.dll"+Chr(13)+Chr(10)
 If FileSize("fmod.dll")=0 Then InitErrorStr=InitErrorStr+ "fmod.dll"+Chr(13)+Chr(10)
 If FileSize("FreeImage.dll")=0 Then InitErrorStr=InitErrorStr+ "FreeImage.dll"+Chr(13)+Chr(10)
 
 If Len(InitErrorStr)>0 Then
-	RuntimeError "The following DLLs were not found in the game directory:"+Chr(13)+Chr(10)+Chr(13)+Chr(10)+InitErrorStr
+	RuntimeError "The following DLLs were not found in the game directory: "+Chr(13)+Chr(10)+Chr(13)+Chr(10)+InitErrorStr
 EndIf
 
 Include "Source Code\StrictLoads.bb"
@@ -30,7 +31,7 @@ Global UpdaterFont%
 Global Font1%, Font2%, Font3%, Font4%, Font5%
 Global ConsoleFont%
 
-Global VersionNumber$ = "5.0"
+Global VersionNumber$ = "6.0 Demo"
 Global CompatibleNumber$ = "1.3.11" ;Only change this if the version given isn't working with the current build version - ENDSHN
 
 Global MenuWhite%, MenuBlack%
@@ -191,7 +192,7 @@ Global GameSaved%
 
 Global CanSave% = True
 
-AppTitle "SCP - Containment Breach MD v"+VersionNumber
+AppTitle GetINIString(LangFile,"Title", "main")+VersionNumber
 
 PlayStartupVideos()
 
@@ -203,7 +204,7 @@ Global CursorIMG% = LoadImage_Strict("GFX\cursor.png")
 
 Global SelectedLoadingScreen.LoadingScreens, LoadingScreenAmount%, LoadingScreenText%
 Global LoadingBack% = LoadImage_Strict("Loadingscreens\loadingback.jpg")
-InitLoadingScreens("Loadingscreens\loadingscreens.ini")
+InitLoadingScreens("Data\loadingscreens.ini")
 
 ;For some reason, Blitz3D doesn't load fonts that have filenames that
 ;don't match their "internal name" (i.e. their display name in applications
@@ -3858,7 +3859,7 @@ Function InitCredits()
 	Local l$
 	
 	CreditsFont% = LoadFont_Strict("GFX\font\cour\Morning Demon.ttf", Int(21 * (GraphicHeight / 1024.0)), 0,0,0)
-	CreditsFont2% = LoadFont_Strict("GFX\font\courbd\Morning Demon.ttf", Int(35 * (GraphicHeight / 1024.0)), 0,0,0)
+	CreditsFont2% = LoadFont_Strict("GFX\font\courbd\Morning Demon bd.ttf", Int(35 * (GraphicHeight / 1024.0)), 0,0,0)
 	
 	If CreditsScreen = 0
 		CreditsScreen = LoadImage_Strict("GFX\creditsscreen.pt")
@@ -11904,3 +11905,6 @@ Function RotateEntity90DegreeAngles(entity%)
 	EndIf
 	
 End Function
+
+
+

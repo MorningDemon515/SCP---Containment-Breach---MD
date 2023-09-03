@@ -9,6 +9,7 @@
 				 Don't Website
 							
 
+(Note: This version is a beta version and is still in the development stage)
 
 The game is based on the works of the SCP Foundation community (http://www.scp-wiki.net/).
 See "Credits.txt" for further details.

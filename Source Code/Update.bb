@@ -559,7 +559,7 @@ Function CheckForUpdates%()
 	
 	;If GetINIInt(OptionFile,"box_of_horrors","check for updates")=False Then Return
 	
-	AppTitle "SCP - Containment Breach MD v5.0 Update Checker"
+	AppTitle GetINIString(LangFile,"Title", "update")
 	
 	If !UpdateCheckEnabled Then Return 0
 	
@@ -659,7 +659,7 @@ Function CheckForUpdates%()
             Color 255,255,255
 			Rect 480, 200, 140, 95
 			Color 0,0,0
-			RowText2("SCP - Containment Breach MD v5.0",482,210,137,90)
+			RowText2(GetINIString(LangFile,"Title", "vis"),482,210,137,90)
 			
 			EndIf
 			y# = 201

@@ -6,8 +6,6 @@
 
 http://creativecommons.org/licenses/by-sa/3.0/
 
-如何构建:
 引擎:
 •	Blitz3D vTSS
-
-把所有的decls文件放入userlib文件，然后打开Run.bb文件，编译并运行！
+(注:此版本为测试版，处于开发阶段)

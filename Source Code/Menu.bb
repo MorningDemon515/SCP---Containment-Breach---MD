@@ -144,7 +144,7 @@ Function UpdateMainMenu()
 			Local txt$
 			Select i
 				Case 0
-					txt = "NEW GAME"
+					txt = GetINIString(LangFile,"Menu", "newgame")
 					RandomSeed = ""
 					If temp Then 
 						If Rand(15)=1 Then 
@@ -191,16 +191,16 @@ Function UpdateMainMenu()
 						MainMenuTab = 1
 					EndIf
 				Case 1
-					txt = "LOAD GAME"
+					txt = GetINIString(LangFile,"Menu", "loadgame")
 					If temp Then
 						LoadSaveGames()
 						MainMenuTab = 2
 					EndIf
 				Case 2
-					txt = "OPTIONS"
+					txt = GetINIString(LangFile,"Menu", "opitons")
 					If temp Then MainMenuTab = 3
 				Case 3
-					txt = "QUIT"
+					txt = GetINIString(LangFile,"Menu", "quit")
 					If temp Then
 	                StopChannel(CurrMusicStream)
 						End
@@ -224,7 +224,7 @@ Function UpdateMainMenu()
 		
 		DrawFrame(x, y, width, height)
 		
-		If DrawButton(x + width + 20 * MenuScale, y, 580 * MenuScale - width - 20 * MenuScale, height, "BACK", False) Then 
+		If DrawButton(x + width + 20 * MenuScale, y, 580 * MenuScale - width - 20 * MenuScale, height, GetINIString(LangFile,"Menu", "back"), False) Then 
 			Select MainMenuTab
 				Case 1
 					PutINIValue(OptionFile, "options", "intro enabled", IntroEnabled%)
@@ -261,7 +261,7 @@ Function UpdateMainMenu()
 				
 				Color(255, 255, 255)
 				SetFont Font2
-				Text(x + width / 2, y + height / 2, "NEW GAME", True, True)
+				Text(x + width / 2, y + height / 2, GetINIString(LangFile,"Menu", "newgame"), True, True)
 				
 				x = 160 * MenuScale
 				y = y + height + 20 * MenuScale
@@ -272,7 +272,7 @@ Function UpdateMainMenu()
 				
 				SetFont Font1
 				
-				Text (x + 20 * MenuScale, y + 20 * MenuScale, "Name:")
+				Text (x + 20 * MenuScale, y + 20 * MenuScale, GetINIString(LangFile,"Menu", "name"))
 				CurrSave = InputBox(x + 150 * MenuScale, y + 15 * MenuScale, 200 * MenuScale, 30 * MenuScale, CurrSave, 1)
 				CurrSave = Left(CurrSave, 15)
 				CurrSave = Replace(CurrSave,":","")
@@ -288,10 +288,10 @@ Function UpdateMainMenu()
 				
 				Color 255,255,255
 				If SelectedMap = "" Then
-					Text (x + 20 * MenuScale, y + 60 * MenuScale, "Map seed:")
+					Text (x + 20 * MenuScale, y + 60 * MenuScale, GetINIString(LangFile,"Menu", "mapseed"))
 					RandomSeed = Left(InputBox(x+150*MenuScale, y+55*MenuScale, 200*MenuScale, 30*MenuScale, RandomSeed, 3),15)	
 				Else
-					Text (x + 20 * MenuScale, y + 60 * MenuScale, "Selected map:")
+					Text (x + 20 * MenuScale, y + 60 * MenuScale, GetINIString(LangFile,"Menu", "selectedmap"))
 					Color (255, 255, 255)
 					Rect(x+150*MenuScale, y+55*MenuScale, 200*MenuScale, 30*MenuScale)
 					Color (0, 0, 0)
@@ -304,16 +304,16 @@ Function UpdateMainMenu()
 						Text(x+150*MenuScale + 100*MenuScale, y+55*MenuScale + 15*MenuScale, SelectedMap, True, True)
 					EndIf
 					
-					If DrawButton(x+370*MenuScale, y+55*MenuScale, 120*MenuScale, 30*MenuScale, "Deselect", False) Then
+					If DrawButton(x+370*MenuScale, y+55*MenuScale, 120*MenuScale, 30*MenuScale, GetINIString(LangFile,"Menu", "deselect"), False) Then
 						SelectedMap=""
 					EndIf
 				EndIf	
 				
-				Text(x + 20 * MenuScale, y + 110 * MenuScale+3, "Enable intro sequence:")
+				Text(x + 20 * MenuScale, y + 110 * MenuScale+3, GetINIString(LangFile,"Menu", "eis"))
 				IntroEnabled = DrawTick(x + 280 * MenuScale, y + 110 * MenuScale, IntroEnabled)	
 				
 				;Local modeName$, modeDescription$, selectedDescription$
-				Text (x + 20 * MenuScale, y + 150 * MenuScale+3, "Difficulty:")				
+				Text (x + 20 * MenuScale, y + 150 * MenuScale+3, GetINIString(LangFile,"Menu", "diff"))				
 				For i = SAFE To CUSTOM
 					If DrawTick(x + 20 * MenuScale, y + (180+30*i) * MenuScale, (SelectedDifficulty = difficulties(i))) Then SelectedDifficulty = difficulties(i)
 					Color(difficulties(i)\r,difficulties(i)\g,difficulties(i)\b)
@@ -325,7 +325,7 @@ Function UpdateMainMenu()
 				
 				If SelectedDifficulty\customizable Then
 					SelectedDifficulty\permaDeath =  DrawTick(x + 160 * MenuScale, y + 165 * MenuScale, (SelectedDifficulty\permaDeath))
-					Text(x + 200 * MenuScale, y + 165 * MenuScale+3, "Permadeath")
+					Text(x + 200 * MenuScale, y + 165 * MenuScale+3, GetINIString(LangFile,"Menu", "per"))
 					
 					If DrawTick(x + 160 * MenuScale, y + 195 * MenuScale, SelectedDifficulty\saveType = SAVEANYWHERE And (Not SelectedDifficulty\permaDeath), SelectedDifficulty\permaDeath) Then 
 						SelectedDifficulty\saveType = SAVEANYWHERE
@@ -333,10 +333,10 @@ Function UpdateMainMenu()
 						SelectedDifficulty\saveType = SAVEONSCREENS
 					EndIf
 					
-					Text(x + 200 * MenuScale, y + 195 * MenuScale+3, "Save anywhere")	
+					Text(x + 200 * MenuScale, y + 195 * MenuScale+3, GetINIString(LangFile,"Menu", "saw"))	
 					
 					SelectedDifficulty\aggressiveNPCs =  DrawTick(x + 160 * MenuScale, y + 225 * MenuScale, SelectedDifficulty\aggressiveNPCs)
-					Text(x + 200 * MenuScale, y + 225 * MenuScale+3, "Aggressive NPCs")
+					Text(x + 200 * MenuScale, y + 225 * MenuScale+3, GetINIString(LangFile,"Menu", "anpc"))
 					
 					;Other factor's difficulty
 					Color 255,255,255
@@ -354,24 +354,24 @@ Function UpdateMainMenu()
 					Color 255,255,255
 					Select SelectedDifficulty\otherFactors
 						Case EASY
-							Text(x + 200 * MenuScale, y + 255 * MenuScale+3, "Other difficulty factors: Easy")
+							Text(x + 200 * MenuScale, y + 255 * MenuScale+3, GetINIString(LangFile,"Menu", "odfe"))
 						Case NORMAL
-							Text(x + 200 * MenuScale, y + 255 * MenuScale+3, "Other difficulty factors: Normal")
+							Text(x + 200 * MenuScale, y + 255 * MenuScale+3, GetINIString(LangFile,"Menu", "odfn"))
 						Case HARD
-							Text(x + 200 * MenuScale, y + 255 * MenuScale+3, "Other difficulty factors: Hard")
+							Text(x + 200 * MenuScale, y + 255 * MenuScale+3, GetINIString(LangFile,"Menu", "odfh"))
 					End Select
 				Else
 					RowText(SelectedDifficulty\description+1, x+160*MenuScale, y+160*MenuScale, (410-20)*MenuScale, 200)					
 				EndIf
 				
-				If DrawButton(x, y + height + 20 * MenuScale, 160 * MenuScale, 70 * MenuScale, "Load map", False) Then
+				If DrawButton(x, y + height + 20 * MenuScale, 160 * MenuScale, 70 * MenuScale, GetINIString(LangFile,"Menu", "loadmap"), False) Then
 					MainMenuTab = 4
 					LoadSavedMaps()
 				EndIf
 				
 				SetFont Font2
 				
-				If DrawButton(x + 420 * MenuScale, y + height + 20 * MenuScale, 160 * MenuScale, 70 * MenuScale, "START", False) Then
+				If DrawButton(x + 420 * MenuScale, y + height + 20 * MenuScale, 160 * MenuScale, 70 * MenuScale, GetINIString(LangFile,"Menu", "start"), False) Then
 					If CurrSave = "" Then CurrSave = "untitled"
 					
 					If RandomSeed = "" Then
@@ -418,7 +418,7 @@ Function UpdateMainMenu()
 				
 				Color(255, 255, 255)
 				SetFont Font2
-				Text(x + width / 2, y + height / 2, "LOAD GAME", True, True)
+				Text(x + width / 2, y + height / 2, GetINIString(LangFile,"Menu", "loadgame"), True, True)
 				
 				x = 160 * MenuScale
 				y = y + height + 20 * MenuScale
@@ -450,7 +450,7 @@ Function UpdateMainMenu()
 				
 				DrawFrame(x+50*MenuScale,y+510*MenuScale,width-100*MenuScale,55*MenuScale)
 				
-				Text(x+(width/2.0),y+536*MenuScale,"Page "+Int(Max((CurrLoadGamePage+1),1))+"/"+Int(Max((Int(Ceil(Float(SaveGameAmount)/6.0))),1)),True,True)
+				Text(x+(width/2.0),y+536*MenuScale,GetINIString(LangFile,"Menu", "page")+Int(Max((CurrLoadGamePage+1),1))+"/"+Int(Max((Int(Ceil(Float(SaveGameAmount)/6.0))),1)),True,True)
 				
 				SetFont Font1
 				
@@ -459,7 +459,7 @@ Function UpdateMainMenu()
 				EndIf
 				
 				If SaveGameAmount = 0 Then
-					Text (x + 20 * MenuScale, y + 20 * MenuScale, "No saved games.")
+					Text (x + 20 * MenuScale, y + 20 * MenuScale, GetINIString(LangFile,"Menu", "nsg"))
 				Else
 					x = x + 20 * MenuScale
 					y = y + 20 * MenuScale
@@ -483,9 +483,9 @@ Function UpdateMainMenu()
 								If SaveGameVersion(i - 1) <> CompatibleNumber And SaveGameVersion(i - 1) <> "1.3.10" Then
 									DrawFrame(x + 280 * MenuScale, y + 20 * MenuScale, 100 * MenuScale, 30 * MenuScale)
 									Color(255, 0, 0)
-									Text(x + 330 * MenuScale, y + 34 * MenuScale, "Load", True, True)
+									Text(x + 330 * MenuScale, y + 34 * MenuScale, GetINIString(LangFile,"Menu", "load"), True, True)
 								Else
-									If DrawButton(x + 280 * MenuScale, y + 20 * MenuScale, 100 * MenuScale, 30 * MenuScale, "Load", False) Then
+									If DrawButton(x + 280 * MenuScale, y + 20 * MenuScale, 100 * MenuScale, 30 * MenuScale, GetINIString(LangFile,"Menu", "load"), False) Then
 										LoadEntities()
 										LoadAllSounds()
 										LoadGame(SavePath + SaveGames(i - 1) + "\")
@@ -495,7 +495,7 @@ Function UpdateMainMenu()
 									EndIf
 								EndIf
 								
-								If DrawButton(x + 400 * MenuScale, y + 20 * MenuScale, 100 * MenuScale, 30 * MenuScale, "Delete", False) Then
+								If DrawButton(x + 400 * MenuScale, y + 20 * MenuScale, 100 * MenuScale, 30 * MenuScale, GetINIString(LangFile,"Menu", "delete"), False) Then
 									SaveMSG = SaveGames(i - 1)
 									DebugLog SaveMSG
 									Exit
@@ -507,11 +507,11 @@ Function UpdateMainMenu()
 								Else
 									Color(100, 100, 100)
 								EndIf
-								Text(x + 330 * MenuScale, y + 34 * MenuScale, "Load", True, True)
+								Text(x + 330 * MenuScale, y + 34 * MenuScale, GetINIString(LangFile,"Menu", "load"), True, True)
 								
 								DrawFrame(x + 400 * MenuScale, y + 20 * MenuScale, 100 * MenuScale, 30 * MenuScale)
 								Color(100, 100, 100)
-								Text(x + 450 * MenuScale, y + 34 * MenuScale, "Delete", True, True)
+								Text(x + 450 * MenuScale, y + 34 * MenuScale, GetINIString(LangFile,"Menu", "delete"), True, True)
 							EndIf
 							
 							y = y + 80 * MenuScale
@@ -524,15 +524,15 @@ Function UpdateMainMenu()
 						x = 740 * MenuScale
 						y = 376 * MenuScale
 						DrawFrame(x, y, 420 * MenuScale, 200 * MenuScale)
-						RowText("Are you sure you want to delete this save?", x + 20 * MenuScale, y + 15 * MenuScale, 400 * MenuScale, 200 * MenuScale)
+						RowText(GetINIString(LangFile,"Menu", "aysy"), x + 20 * MenuScale, y + 15 * MenuScale, 400 * MenuScale, 200 * MenuScale)
 						;AAText(x + 20 * MenuScale, y + 15 * MenuScale, "Are you sure you want to delete this save?")
-						If DrawButton(x + 50 * MenuScale, y + 150 * MenuScale, 100 * MenuScale, 30 * MenuScale, "Yes", False) Then
+						If DrawButton(x + 50 * MenuScale, y + 150 * MenuScale, 100 * MenuScale, 30 * MenuScale, GetINIString(LangFile,"Menu", "yes"), False) Then
 							DeleteFile(CurrentDir() + SavePath + SaveMSG + "\save.txt")
 							DeleteDir(CurrentDir() + SavePath + SaveMSG)
 							SaveMSG = ""
 							LoadSaveGames()
 						EndIf
-						If DrawButton(x + 250 * MenuScale, y + 150 * MenuScale, 100 * MenuScale, 30 * MenuScale, "No", False) Then
+						If DrawButton(x + 250 * MenuScale, y + 150 * MenuScale, 100 * MenuScale, 30 * MenuScale, GetINIString(LangFile,"Menu", "no"), False) Then
 							SaveMSG = ""
 						EndIf
 					EndIf
@@ -552,7 +552,7 @@ Function UpdateMainMenu()
 				
 				Color(255, 255, 255)
 				SetFont Font2
-				Text(x + width / 2, y + height / 2, "OPTIONS", True, True)
+				Text(x + width / 2, y + height / 2, GetINIString(LangFile,"Menu", "opitons"), True, True)
 				
 				x = 160 * MenuScale
 				y = y + height + 20 * MenuScale
@@ -572,10 +572,10 @@ Function UpdateMainMenu()
 				EndIf
 				
 				Color 255,255,255
-				If DrawButton(x+20*MenuScale,y+15*MenuScale,width/5,height/2, "GRAPHICS", False) Then MainMenuTab = 3
-				If DrawButton(x+160*MenuScale,y+15*MenuScale,width/5,height/2, "AUDIO", False) Then MainMenuTab = 5
-				If DrawButton(x+300*MenuScale,y+15*MenuScale,width/5,height/2, "CONTROLS", False) Then MainMenuTab = 6
-				If DrawButton(x+440*MenuScale,y+15*MenuScale,width/5,height/2, "ADVANCED", False) Then MainMenuTab = 7
+				If DrawButton(x+20*MenuScale,y+15*MenuScale,width/5,height/2, GetINIString(LangFile,"Menu", "gr"), False) Then MainMenuTab = 3
+				If DrawButton(x+160*MenuScale,y+15*MenuScale,width/5,height/2, GetINIString(LangFile,"Menu", "au"), False) Then MainMenuTab = 5
+				If DrawButton(x+300*MenuScale,y+15*MenuScale,width/5,height/2, GetINIString(LangFile,"Menu", "co"), False) Then MainMenuTab = 6
+				If DrawButton(x+440*MenuScale,y+15*MenuScale,width/5,height/2, GetINIString(LangFile,"Menu", "ad"), False) Then MainMenuTab = 7
 				
 				SetFont Font1
 				y = y + 70 * MenuScale
@@ -601,7 +601,7 @@ Function UpdateMainMenu()
 					y=y+20*MenuScale
 					
 					Color 255,255,255				
-					Text(x + 20 * MenuScale, y+4, "Enable bump mapping:")	
+					Text(x + 20 * MenuScale, y+4, GetINIString(LangFile,"Menu", "ebm"))	
 					BumpEnabled = DrawTick(x + 310 * MenuScale, y + MenuScale, BumpEnabled)
 					If MouseOn(x + 310 * MenuScale, y + MenuScale, 20*MenuScale,20*MenuScale) And OnSliderID=0
 						;DrawTooltip("Not available in this version")
@@ -611,7 +611,7 @@ Function UpdateMainMenu()
 					y=y+30*MenuScale
 					
 					Color 255,255,255
-					Text(x + 20 * MenuScale, y+4, "VSync:")
+					Text(x + 20 * MenuScale, y+4, GetINIString(LangFile,"Menu", "vsync"))
 					Vsync% = DrawTick(x + 310 * MenuScale, y + MenuScale, Vsync%)
 					If MouseOn(x+310*MenuScale,y+MenuScale,20*MenuScale,20*MenuScale) And OnSliderID=0
 						DrawOptionsTooltip(tx,ty,tw,th,"vsync")
@@ -620,7 +620,7 @@ Function UpdateMainMenu()
 					y=y+30*MenuScale
 					
 					Color 255,255,255
-					Text(x + 20 * MenuScale, y+4, "Anti-aliasing:")
+					Text(x + 20 * MenuScale, y+4, GetINIString(LangFile,"Menu", "aa"))
 					Opt_AntiAlias = DrawTick(x + 310 * MenuScale, y + MenuScale, Opt_AntiAlias%)
 					;AAText(x + 20 * MenuScale, y + 15 * MenuScale, "(fullscreen mode only)")
 					If MouseOn(x+310*MenuScale,y+MenuScale,20*MenuScale,20*MenuScale) And OnSliderID=0
@@ -630,7 +630,7 @@ Function UpdateMainMenu()
 					y=y+30*MenuScale ;40
 					
 					Color 255,255,255
-					Text(x + 20 * MenuScale, y+5, "Enable room lights:")
+					Text(x + 20 * MenuScale, y+5, GetINIString(LangFile,"Menu", "erl"))
 					EnableRoomLights = DrawTick(x + 310 * MenuScale, y + MenuScale, EnableRoomLights)
 					If MouseOn(x+310*MenuScale,y+MenuScale,20*MenuScale,20*MenuScale) And OnSliderID=0
 						DrawOptionsTooltip(tx,ty,tw,th,"roomlights")
@@ -641,7 +641,7 @@ Function UpdateMainMenu()
 					;Local prevGamma# = ScreenGamma
 					ScreenGamma = (SlideBar(x + 310*MenuScale, y+6*MenuScale, 150*MenuScale, ScreenGamma*50.0)/50.0)
 					Color 255,255,255
-					Text(x + 20 * MenuScale, y+7, "Screen gamma")
+					Text(x + 20 * MenuScale, y+7, GetINIString(LangFile,"Menu", "sg"))
 					If MouseOn(x+310*MenuScale,y+6*MenuScale,150*MenuScale+14,20) And OnSliderID=0
 						DrawOptionsTooltip(tx,ty,tw,th,"gamma",ScreenGamma)
 					EndIf
@@ -649,7 +649,7 @@ Function UpdateMainMenu()
 					y=y+50*MenuScale
 					
 					Color 255,255,255
-					Text(x + 20 * MenuScale, y+4, "Particle amount:")
+					Text(x + 20 * MenuScale, y+4, GetINIString(LangFile,"Menu", "pa"))
 					ParticleAmount = Slider3(x+310*MenuScale,y+6*MenuScale,150*MenuScale,ParticleAmount,2,"MINIMAL","REDUCED","FULL")
 					If (MouseOn(x + 310 * MenuScale, y-6*MenuScale, 150*MenuScale+14, 20) And OnSliderID=0) Or OnSliderID=2
 						DrawOptionsTooltip(tx,ty,tw,th,"particleamount",ParticleAmount)
@@ -658,7 +658,7 @@ Function UpdateMainMenu()
 					y=y+50*MenuScale
 					
 					Color 255,255,255
-					Text(x + 20 * MenuScale, y+3, "Texture LOD Bias:")
+					Text(x + 20 * MenuScale, y+3, GetINIString(LangFile,"Menu", "tlb"))
 					TextureDetails = Slider5(x+310*MenuScale,y+6*MenuScale,150*MenuScale,TextureDetails,3,"0.8","0.4","0.0","-0.4","-0.8")
 					Select TextureDetails%
 						Case 0
@@ -680,7 +680,7 @@ Function UpdateMainMenu()
 					y=y+50*MenuScale
 					
 					Color 255,255,255
-					Text(x + 20 * MenuScale, y+5, "Save textures in the VRAM:")
+					Text(x + 20 * MenuScale, y+5, GetINIString(LangFile,"Menu", "stv"))
 					EnableVRam = DrawTick(x + 310 * MenuScale, y + MenuScale, EnableVRam)
 					If MouseOn(x+310*MenuScale,y+MenuScale,20*MenuScale,20*MenuScale) And OnSliderID=0
 						DrawOptionsTooltip(tx,ty,tw,th,"vram")
@@ -696,7 +696,7 @@ Function UpdateMainMenu()
 					
 					MusicVolume = (SlideBar(x + 310*MenuScale, y-4*MenuScale, 150*MenuScale, MusicVolume*100.0)/100.0)
 					Color 255,255,255
-					Text(x + 20 * MenuScale, y+1, "Music volume:")
+					Text(x + 20 * MenuScale, y+1, GetINIString(LangFile,"Menu", "mv"))
 					If MouseOn(x+310*MenuScale,y-4*MenuScale,150*MenuScale+14,20)
 						DrawOptionsTooltip(tx,ty,tw,th,"musicvol",MusicVolume)
 					EndIf
@@ -707,7 +707,7 @@ Function UpdateMainMenu()
 					PrevSFXVolume = (SlideBar(x + 310*MenuScale, y-4*MenuScale, 150*MenuScale, SFXVolume*100.0)/100.0)
 					SFXVolume = PrevSFXVolume
 					Color 255,255,255
-					Text(x + 20 * MenuScale, y+1, "Sound volume:")
+					Text(x + 20 * MenuScale, y+1, GetINIString(LangFile,"Menu", "sv"))
 					If MouseOn(x+310*MenuScale,y-4*MenuScale,150*MenuScale+14,20)
 						DrawOptionsTooltip(tx,ty,tw,th,"soundvol",PrevSFXVolume)
 					EndIf
@@ -1126,7 +1126,7 @@ Function UpdateLauncher()
 	BlinkMeterIMG% = LoadImage_Strict("GFX\blinkmeter.jpg")
 	CheckForUpdates()
 	
-	AppTitle "SCP - Containment Breach MD v5.0 Launcher"
+	AppTitle GetINIString(LangFile,"Title", "launcher")
 	
 	Repeat
 		
@@ -1139,7 +1139,7 @@ Function UpdateLauncher()
 		Color 255, 255, 255
 		DrawImage(LauncherIMG, 0, 0)
 		
-		Text(20, 240 - 65+3,"Resolution: ")
+		Text(20, 240 - 65+3,GetINIString(LangFile,"Launcher", "R"))
 		
 		Local x% = 40
 		Local y% = 270 - 65
@@ -1163,15 +1163,15 @@ Function UpdateLauncher()
 		x = 30
 		y = 369
 		Rect(x - 10, y, 340, 95)
-		Text(x - 10, y - 25+3, "Solution to MAV error:")
+		Text(x - 10, y - 25+3, GetINIString(LangFile,"Launcher", "MAV"))
 		Color 0,0,0
-        Text( x, y + 4,"1.Run the game as administrator", 290, False)
-		Text( x, y + 15,"2.Make sure your graphics card", 290, False)
-		Text( x, y + 26,"drivers are up-to-date", 290, False)
-		Text( x, y + 40,"3.Try different resolutions", 290, False)
-		Text( x, y + 51,"running the game in full screen", 290, False)
-		Text( x, y + 65,"4.Try running the game in", 290, False)
-		Text( x, y + 77,"different compatibility modes ", 290, False)
+        Text( x, y + 4,GetINIString(LangFile,"Launcher", "1R"), 290, False)
+		Text( x, y + 15,GetINIString(LangFile,"Launcher", "2M"), 290, False)
+		Text( x, y + 26,GetINIString(LangFile,"Launcher", "dri"), 290, False)
+		Text( x, y + 40,GetINIString(LangFile,"Launcher", "3T"), 290, False)
+		Text( x, y + 51,GetINIString(LangFile,"Launcher", "running"), 290, False)
+		Text( x, y + 65,GetINIString(LangFile,"Launcher", "4T"), 290, False)
+		Text( x, y + 77,GetINIString(LangFile,"Launcher", "different"), 290, False)
 		
 		Fullscreen = DrawTick(40 + 430 - 15, 260 - 55 + 5 - 8, Fullscreen, BorderlessWindowed)
 		BorderlessWindowed = DrawTick(40 + 430 - 15, 260 - 55 + 35, BorderlessWindowed)
@@ -1188,10 +1188,10 @@ Function UpdateLauncher()
   		  Color 255, 255, 255
 		EndIf
 
-		Text(40 + 430 + 15, 262 - 55 + 5 - 8+2, "Fullscreen")
+		Text(40 + 430 + 15, 262 - 55 + 5 - 8+2, GetINIString(LangFile,"Launcher", "Full"))
 		Color 255, 255, 255
-		Text(40 + 430 + 15, 262 - 55 + 35 - 8+2, "Borderless",False,False)
-		Text(40 + 430 + 15, 262 - 55 + 35 + 12+2, "windowed mode",False,False)
+		Text(40 + 430 + 15, 262 - 55 + 35 - 8+2, GetINIString(LangFile,"Launcher", "Bor"),False,False)
+		Text(40 + 430 + 15, 262 - 55 + 35 + 12+2, GetINIString(LangFile,"Launcher", "Winm"),False,False)
 
 		If BorderlessWindowed Or (Not Fullscreen)
  		   Color 255, 0, 0
@@ -1200,30 +1200,34 @@ Function UpdateLauncher()
 		    Color 255, 255, 255
 		EndIf
 
-		Text(40 + 430 + 15, 262 - 55 + 65 + 8+3, "16 Bit")
+		Text(40 + 430 + 15, 262 - 55 + 65 + 8+3, GetINIString(LangFile,"Launcher", "16b"))
 		Color 255, 255, 255
-		Text(40 + 430 + 15, 262 - 55 + 95 + 8+2, "Use launcher")
+		Text(40 + 430 + 15, 262 - 55 + 95 + 8+2, GetINIString(LangFile,"Launcher", "ul"))
 		
 		If (Not BorderlessWindowed)
 			If Fullscreen
-				Text(40+ 260 + 15, 262 - 55 + 140, "Current Resolution: "+(GfxModeWidths(SelectedGFXMode) + "x" + GfxModeHeights(SelectedGFXMode) + "," + (16+(16*(Not Bit16Mode)))))
+				Text(40+ 260 + 15, 262 - 55 + 140, GetINIString(LangFile,"Launcher", "cr")+(GfxModeWidths(SelectedGFXMode) + "x" + GfxModeHeights(SelectedGFXMode) + "," + (16+(16*(Not Bit16Mode)))))
 			Else
-				Text(40+ 260 + 15, 262 - 55 + 140, "Current Resolution: "+(GfxModeWidths(SelectedGFXMode) + "x" + GfxModeHeights(SelectedGFXMode) + ",32"))
+				Text(40+ 260 + 15, 262 - 55 + 140, GetINIString(LangFile,"Launcher", "cr")+(GfxModeWidths(SelectedGFXMode) + "x" + GfxModeHeights(SelectedGFXMode) + ",32"))
 			EndIf
 		Else
-			Text(40+ 260 + 15, 262 - 55 + 140, "Current Resolution: "+GfxModeWidths(SelectedGFXMode) + "x" + GfxModeHeights(SelectedGFXMode) + ",32")
+			Text(40+ 260 + 15, 262 - 55 + 140, GetINIString(LangFile,"Launcher", "cr")+GfxModeWidths(SelectedGFXMode) + "x" + GfxModeHeights(SelectedGFXMode) + ",32")
 			If GfxModeWidths(SelectedGFXMode)<DesktopWidth() Then
-				Text(40+ 260 + 65, 262 - 55 + 160, "(upscaled to")
+				Text(40+ 260 + 65, 262 - 55 + 160, GetINIString(LangFile,"Launcher", "ut"))
 				Text(40+ 260 + 65, 262 - 55 + 180, DesktopWidth() + "x" + DesktopHeight() + ",32)")
             ElseIf GfxModeWidths(SelectedGFXMode)>DesktopWidth() Then
-				Text(40+ 260 + 65, 262 - 55 + 160, "(downscaled to")
+				Text(40+ 260 + 65, 262 - 55 + 160, GetINIString(LangFile,"Launcher", "dt"))
 				Text(40+ 260 + 65, 262 - 55 + 180, DesktopWidth() + "x" + DesktopHeight() + ",32)")
 			EndIf
 		EndIf
 		
 		Color 255,255,255
+        
+        ;If DrawButton(LauncherWidth - 30 - 220, LauncherHeight - 50 - 55, 100, 30, GetINIString(LangFile,"Launcher", "tools"), False, False, False) Then
+          ;  Tools()
+		;EndIf
 
-		If DrawButton(LauncherWidth - 30 - 90, LauncherHeight - 50 - 55, 100, 30, "LAUNCH", False, False, False) Then
+		If DrawButton(LauncherWidth - 30 - 90, LauncherHeight - 50 - 55, 100, 30, GetINIString(LangFile,"Launcher", "launch"), False, False, False) Then
 			GraphicWidth = GfxModeWidths(SelectedGFXMode)
 			GraphicHeight = GfxModeHeights(SelectedGFXMode)
 			RealGraphicWidth = GraphicWidth
@@ -1231,7 +1235,7 @@ Function UpdateLauncher()
 			Exit
 		EndIf
 		
-		If DrawButton(LauncherWidth - 30 - 90, LauncherHeight - 50, 100, 30, "EXIT", False, False, False) Then End
+		If DrawButton(LauncherWidth - 30 - 90, LauncherHeight - 50, 100, 30, GetINIString(LangFile,"Launcher", "exit"), False, False, False) Then End
 		Flip
 	Forever
 	

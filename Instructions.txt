@@ -1,3 +1,10 @@
+----------------------------------------------------------------------------------------
+
+How to compile and run:
+- 1.You need Blitz3DTSS
+- 2.Put all the decls files in Userlib in the Source Code file into the Userlib folder of Blitz3DTSS
+- 3.Open Blitz3DTSS and import the Run.bb file
+- 4.Click on the aircraft icon to run!
 
 ----------------------------------------------------------------------------------------
 

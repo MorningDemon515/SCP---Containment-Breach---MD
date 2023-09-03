@@ -1,4 +1,4 @@
-Include "BlitzAL.bb"
+Include "Tools\MusicPlayer\Source Code\BlitzAL.bb"
 
 AppTitle "SCP:CB Music Player"
 
