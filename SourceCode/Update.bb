@@ -615,7 +615,7 @@ Function CheckForUpdates()
 	
 	If latest<>VersionNumber And latest<>"" Then ;a new version is available!
 		updateCheck% = OpenRemoteFile("http://www.scpcbgame.com/index.html")
-		
+	
 		If updateCheck=0 Then Return ;remote file couldn't be opened
 		
 		DownloadURL$ = ""
@@ -623,7 +623,7 @@ Function CheckForUpdates()
 		While Not EORF(updateCheck)
 			If Instr(Lower(rl),"undertowgames.com/file/scp")>0 And Instr(Lower(rl),".zip")>0 Then
 				DownloadURL = Mid(rl,Instr(Lower(rl),"http://"),Instr(Lower(rl),".zip")-Instr(Lower(rl),"http://")+4)
-				DebugLog DownloadURL
+    			DebugLog DownloadURL
 				Exit
 			Else
 				rl = ReadRemoteLine(updateCheck)
