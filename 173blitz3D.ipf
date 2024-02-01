@@ -12,9 +12,6 @@
 <Files>
  AbsPath="\SourceCode\AAText.bb" PrjFolder="" Line="0" Column="0" Tip="0" Visible="False"
  AbsPath="\SourceCode\Achievements.bb" PrjFolder="" Line="0" Column="0" Tip="0" Visible="False"
- AbsPath="\SourceCode\Blitz_Basic_Bank.bb" PrjFolder="" Line="0" Column="0" Tip="0" Visible="False"
- AbsPath="\SourceCode\Blitz_File_FileName.bb" PrjFolder="" Line="0" Column="0" Tip="0" Visible="False"
- AbsPath="\SourceCode\Blitz_File_ZipApi.bb" PrjFolder="" Line="0" Column="0" Tip="0" Visible="False"
  AbsPath="\SourceCode\DevilParticleSystem.bb" PrjFolder="" Line="0" Column="0" Tip="0" Visible="False"
  AbsPath="\SourceCode\Difficulty.bb" PrjFolder="" Line="0" Column="0" Tip="0" Visible="False"
  AbsPath="\SourceCode\DrawPortals.bb" PrjFolder="" Line="0" Column="0" Tip="0" Visible="False"
@@ -31,6 +28,5 @@
  AbsPath="\SourceCode\Save.bb" PrjFolder="" Line="0" Column="0" Tip="0" Visible="False"
  AbsPath="\SourceCode\Skybox.bb" PrjFolder="" Line="0" Column="0" Tip="0" Visible="False"
  AbsPath="\SourceCode\StrictLoads.bb" PrjFolder="" Line="0" Column="0" Tip="0" Visible="False"
- AbsPath="\SourceCode\Update.bb" PrjFolder="" Line="0" Column="0" Tip="0" Visible="False"
  AbsPath="\SourceCode\UpdateEvents.bb" PrjFolder="" Line="0" Column="0" Tip="0" Visible="False"
 </Files>

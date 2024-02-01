@@ -21,11 +21,6 @@ Include "SourceCode\KeyName.bb"
 
 Global OptionFile$ = "options.ini"
 
-Include "SourceCode\Blitz_Basic_Bank.bb"
-Include "SourceCode\Blitz_File_FileName.bb"
-Include "SourceCode\Blitz_File_ZipApi.bb"
-Include "SourceCode\Update.bb"
-
 Include "SourceCode\DevilParticleSystem.bb"
 
 Global ErrorFile$ = "error_log_"
