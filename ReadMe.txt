@@ -2,7 +2,7 @@
 
 ***********************************************************************************
 
-**************************    SCP - CONTAINMENT BREACH MD v5.0   **************************
+**************************    SCP - CONTAINMENT BREACH MD v6.0   **************************
 
 ***********************************************************************************
 
@@ -27,7 +27,7 @@ The source code of the game is available on GitHub: https://https://github.com/M
 	Run SCP - Containment Breach MD.exe in the game folder. 
 	Select which resolution you want to use and click the LAUNCH-button.
 
-	SCP-CB MD v6.0 uses an engine called Blitz3DMAVless(New+1), and since it's a fairly outdated one,
+	SCP-CB MD v6.0 uses an engine called Blitz3D Y-3, and since it's a fairly outdated one,
 	you might run into problems when trying to run it on newer systems.
 
 	If you're getting an error such as "Memory Access Violation" or

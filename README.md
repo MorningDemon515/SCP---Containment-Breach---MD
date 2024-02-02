@@ -7,6 +7,6 @@ This game and the source code are licensed under Creative Commons Attribution-Sh
 http://creativecommons.org/licenses/by-sa/3.0/
 
 Requirements:
-•	Blitz3DMAVless(New+1)(https://github.com/MorningDemon515/blitz3dmavless-vs2019)
+•	Blitz3D Y-3(https://github.com/MorningDemon515/Blitz3D-Y-3)
 
 Beware - the source code is perhaps more horrifying than the game itself!
