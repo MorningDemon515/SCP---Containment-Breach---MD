@@ -998,8 +998,8 @@ Function UpdateMainMenu()
 						
 						Font1% = LoadFont("GFX\font\cour\Courier New.ttf", Int(18 * (GraphicHeight / 1024.0)))
 						Font2% = LoadFont("GFX\font\courbd\Courier New.ttf", Int(58 * (GraphicHeight / 1024.0)))
-						Font3% = LoadFont("GFX\font\DS-DIGI\DS-Digital.ttf", Int(22 * (GraphicHeight / 1024.0)))
-						Font4% = LoadFont("GFX\font\DS-DIGI\DS-Digital.ttf", Int(60 * (GraphicHeight / 1024.0)))
+						Font3% = LoadFont("GFX\font\cour\Courier New.ttf", Int(22 * (GraphicHeight / 1024.0)))
+						Font4% = LoadFont("GFX\font\cour\Courier New.ttf", Int(60 * (GraphicHeight / 1024.0)))
 						Font5% = LoadFont("GFX\font\Journal\Journal.ttf", Int(58 * (GraphicHeight / 1024.0)))
 						ConsoleFont% = LoadFont("GFX\font\cour\Courier New.ttf", Int(22 * (GraphicHeight / 1024.0)))
 						;ReloadAAFont()
@@ -1105,7 +1105,8 @@ Function UpdateMainMenu()
 	
 	Color 255,255,255
 	SetFont ConsoleFont
-	Text 20,GraphicHeight-30,"v"+VersionNumber
+	Text 20,GraphicHeight-50,"v"+VersionNumber
+	Text 20,GraphicHeight-30,"Based on SCP-CB v"+GameVersionNumber
 	
 	;DrawTiledImageRect(MenuBack, 985 * MenuScale, 860 * MenuScale, 200 * MenuScale, 20 * MenuScale, 1200 * MenuScale, 866 * MenuScale, 300, 20 * MenuScale)
 	
@@ -1177,7 +1178,7 @@ Function UpdateLauncher()
 			Color 0, 0, 0
 			If SelectedGFXMode = i Then Rect(x - 1, y - 1, 100, 20, False)
 			
-			Text(x, y , (GfxModeWidths(i) + "x" + GfxModeHeights(i)))
+			Text(x, y + 4 , (GfxModeWidths(i) + "x" + GfxModeHeights(i)))
 			If MouseOn(x - 1, y - 1, 100, 20) Then
 				Color 100, 100, 100
 				Rect(x - 1, y - 1, 100, 20, False)
@@ -1200,7 +1201,7 @@ Function UpdateLauncher()
 			Color 0, 0, 0
 			If SelectedGFXDriver = i Then Rect(x - 1, y - 1, 290, 20, False)
 			;text(x, y, bbGfxDriverName(i))
-			LimitText(GfxDriverName(i), x, y , 290, False)
+			LimitText(GfxDriverName(i), x, y +4, 290, False)
 			If MouseOn(x - 1, y - 1, 290, 20) Then
 				Color 100, 100, 100
 				Rect(x - 1, y - 1, 290, 20, False)

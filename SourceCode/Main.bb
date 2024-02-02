@@ -11854,7 +11854,7 @@ Function PlayStartupVideos()
 	
 	Local MovieFile$, i%
 	
-	For i = 0 To 1
+	For i = 0 To 2
 		Select i
 			Case 0
 				;[Block]
@@ -11864,6 +11864,10 @@ Function PlayStartupVideos()
 				;[Block]
 				MovieFile = "GFX\menu\startup_TSS"
 				;[End Block]
+			Case 2
+				;[Block]
+				MovieFile = "GFX\menu\startup_MDGAME"
+				;[End Block]	
 		End Select
 		
 		Movie% = OpenMovie(MovieFile + ".avi")
