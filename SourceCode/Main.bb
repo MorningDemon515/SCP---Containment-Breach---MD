@@ -217,15 +217,15 @@ InitLoadingScreens("Loadingscreens\loadingscreens.ini")
 ;don't match their "internal name" (i.e. their display name in applications
 ;like Word and such). As a workaround, I moved the files and renamed them so they
 ;can load without FastText.
-Font1% = LoadFont("GFX\font\cour\Courier New.ttf", Int(19 * (GraphicHeight / 1024.0)), 0,0,0)
-Font2% = LoadFont("GFX\font\courbd\Courier New.ttf", Int(58 * (GraphicHeight / 1024.0)), 0,0,0)
-Font3% = LoadFont("GFX\font\DS-DIGI\DS-Digital.ttf", Int(22 * (GraphicHeight / 1024.0)), 0,0,0)
-Font4% = LoadFont("GFX\font\DS-DIGI\DS-Digital.ttf", Int(60 * (GraphicHeight / 1024.0)), 0,0,0)
-Font5% = LoadFont("GFX\font\Journal\Journal.ttf", Int(58 * (GraphicHeight / 1024.0)), 0,0,0)
+Font1% = LoadFont("GFX\font\cour\Courier New.ttf", Int(19 * (GraphicHeight / 1024.0)))
+Font2% = LoadFont("GFX\font\courbd\Courier New.ttf", Int(58 * (GraphicHeight / 1024.0)))
+Font3% = LoadFont("GFX\font\cour\Courier New.ttf", Int(22 * (GraphicHeight / 1024.0)))
+Font4% = LoadFont("GFX\font\cour\Courier New.ttf", Int(60 * (GraphicHeight / 1024.0)))
+Font5% = LoadFont("GFX\font\Journal\Journal.ttf", Int(58 * (GraphicHeight / 1024.0)))
 
 Global CreditsFont%,CreditsFont2%
 
-ConsoleFont% = LoadFont("GFX\font\cour\Courier New.ttf", Int(20 * (GraphicHeight / 1024.0)), 0,0,0)
+ConsoleFont% = LoadFont("GFX\font\cour\Courier New.ttf", Int(20 * (GraphicHeight / 1024.0)))
 
 SetFont Font2
 
@@ -3869,8 +3869,8 @@ Function InitCredits()
 	Local file% = OpenFile("Credits.txt")
 	Local l$
 	
-	CreditsFont% = LoadFont_Strict("GFX\font\cour\Courier New.ttf", Int(21 * (GraphicHeight / 1024.0)), 0,0,0)
-	CreditsFont2% = LoadFont_Strict("GFX\font\courbd\Courier New.ttf", Int(35 * (GraphicHeight / 1024.0)), 0,0,0)
+	CreditsFont% = LoadFont_Strict("GFX\font\cour\Courier New.ttf", Int(21 * (GraphicHeight / 1024.0)))
+	CreditsFont2% = LoadFont_Strict("GFX\font\courbd\Courier New.ttf", Int(35 * (GraphicHeight / 1024.0)))
 	
 	If CreditsScreen = 0
 		CreditsScreen = LoadImage_Strict("GFX\creditsscreen.pt")
@@ -7556,12 +7556,12 @@ Function DrawMenu()
 							;Next
 					;	EndIf
 						
-						Font1% = LoadFont("GFX\font\cour\Courier New.ttf", Int(18 * (GraphicHeight / 1024.0)), 0,0,0)
-						Font2% = LoadFont("GFX\font\courbd\Courier New.ttf", Int(58 * (GraphicHeight / 1024.0)), 0,0,0)
-						Font3% = LoadFont("GFX\font\DS-DIGI\DS-Digital.ttf", Int(22 * (GraphicHeight / 1024.0)), 0,0,0)
-						Font4% = LoadFont("GFX\font\DS-DIGI\DS-Digital.ttf", Int(60 * (GraphicHeight / 1024.0)), 0,0,0)
-						Font5% = LoadFont("GFX\font\Journal\Journal.ttf", Int(58 * (GraphicHeight / 1024.0)), 0,0,0)
-						ConsoleFont% = LoadFont("GFX\font\cour\Courier New.ttf", Int(22 * (GraphicHeight / 1024.0)), 0,0,0)
+						Font1% = LoadFont("GFX\font\cour\Courier New.ttf", Int(18 * (GraphicHeight / 1024.0)))
+						Font2% = LoadFont("GFX\font\courbd\Courier New.ttf", Int(58 * (GraphicHeight / 1024.0)))
+						Font3% = LoadFont("GFX\font\DS-DIGI\DS-Digital.ttf", Int(22 * (GraphicHeight / 1024.0)))
+						Font4% = LoadFont("GFX\font\DS-DIGI\DS-Digital.ttf", Int(60 * (GraphicHeight / 1024.0)))
+						Font5% = LoadFont("GFX\font\Journal\Journal.ttf", Int(58 * (GraphicHeight / 1024.0)))
+						ConsoleFont% = LoadFont("GFX\font\cour\Courier New.ttf", Int(22 * (GraphicHeight / 1024.0)))
 						;ReloadAAFont()
 					;	TextEnable_Prev% = TextEnable
 					;EndIf

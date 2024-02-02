@@ -996,12 +996,12 @@ Function UpdateMainMenu()
 							;Next
 					;	EndIf
 						
-						Font1% = LoadFont("GFX\font\cour\Courier New.ttf", Int(18 * (GraphicHeight / 1024.0)), 0,0,0)
-						Font2% = LoadFont("GFX\font\courbd\Courier New.ttf", Int(58 * (GraphicHeight / 1024.0)), 0,0,0)
-						Font3% = LoadFont("GFX\font\DS-DIGI\DS-Digital.ttf", Int(22 * (GraphicHeight / 1024.0)), 0,0,0)
-						Font4% = LoadFont("GFX\font\DS-DIGI\DS-Digital.ttf", Int(60 * (GraphicHeight / 1024.0)), 0,0,0)
-						Font5% = LoadFont("GFX\font\Journal\Journal.ttf", Int(58 * (GraphicHeight / 1024.0)), 0,0,0)
-						ConsoleFont% = LoadFont("GFX\font\cour\Courier New.ttf", Int(22 * (GraphicHeight / 1024.0)), 0,0,0)
+						Font1% = LoadFont("GFX\font\cour\Courier New.ttf", Int(18 * (GraphicHeight / 1024.0)))
+						Font2% = LoadFont("GFX\font\courbd\Courier New.ttf", Int(58 * (GraphicHeight / 1024.0)))
+						Font3% = LoadFont("GFX\font\DS-DIGI\DS-Digital.ttf", Int(22 * (GraphicHeight / 1024.0)))
+						Font4% = LoadFont("GFX\font\DS-DIGI\DS-Digital.ttf", Int(60 * (GraphicHeight / 1024.0)))
+						Font5% = LoadFont("GFX\font\Journal\Journal.ttf", Int(58 * (GraphicHeight / 1024.0)))
+						ConsoleFont% = LoadFont("GFX\font\cour\Courier New.ttf", Int(22 * (GraphicHeight / 1024.0)))
 						;ReloadAAFont()
 					;	TextEnable_Prev% = TextEnable
 					;EndIf
@@ -1126,7 +1126,7 @@ Function UpdateLauncher()
 	RealGraphicWidth = GraphicWidth
 	RealGraphicHeight = GraphicHeight
 	
-	Font1 = LoadFont_Strict("GFX\font\cour\Courier New.ttf", 18, 0,0,0)
+	Font1 = LoadFont_Strict("GFX\font\cour\Courier New.ttf", 18)
 	SetFont Font1
 	MenuWhite = LoadImage_Strict("GFX\menu\menuwhite.jpg")
 	MenuBlack = LoadImage_Strict("GFX\menu\menublack.jpg")	
